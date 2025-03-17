@@ -1,0 +1,401 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-Medium.woff2") format("woff2"), url("fonts/Montserrat-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("fonts/Montserrat-ExtraBold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-Regular.woff2") format("woff2"), url("fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --background-color: linear-gradient(135deg, rgb(5, 56, 106), rgb(10, 16, 22) 59%);
+  --yellow: #FBD13E;
+  --card-shadow: #0F0F1133;
+  --red: #b70000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: none;
+}
+
+body {
+  font-family: "Montserrat", Arial;
+  background-color: rgb(10, 16, 22);
+  background-image: var(--background-color);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+body.lock {
+  overflow: hidden;
+  position: fixed;
+}
+
+a {
+  text-decoration: none;
+}
+
+a, p, h3, h1, span {
+  color: white;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1500px;
+  height: 30px;
+  margin: 32px auto 44px auto;
+  padding-inline: 20px;
+}
+header .logo img {
+  position: relative;
+  height: 30px;
+  z-index: 100;
+}
+
+.header-menu {
+  display: flex;
+  font-weight: 500;
+  font-size: 14px;
+  align-items: center;
+  width: auto;
+}
+.header-menu-list {
+  display: flex;
+  gap: 20px;
+  transition: 0.5s;
+  margin: 0;
+}
+.header-menu-list .link:hover {
+  text-decoration: underline;
+}
+.header-menu-icon {
+  display: block;
+  width: 30px;
+  height: 18px;
+  position: relative;
+  cursor: pointer;
+  padding: 5px;
+}
+.header-menu-icon span {
+  position: absolute;
+  top: calc(50% - 1px);
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  z-index: 100;
+  display: none;
+}
+.header-menu-icon span:first-child {
+  top: 0;
+}
+.header-menu-icon span:last-child {
+  top: auto;
+  bottom: 0;
+}
+.header-menu-icon.active span {
+  transform: scale(0);
+}
+.header-menu-icon.active span:first-child {
+  transform: rotate(-45deg);
+  top: calc(50% - 1px);
+}
+.header-menu-icon.active span:last-child {
+  transform: rotate(45deg);
+  top: calc(50% - 1px);
+}
+
+.buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  z-index: 100;
+}
+
+.price-cart {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.price-cart .price {
+  font-weight: 800;
+  font-size: 23px;
+}
+.price-cart .card-button {
+  background-color: var(--yellow);
+  background-image: url("../images/icons/black-cart.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 5px;
+  box-shadow: 0 10px 31px var(--card-shadow);
+}
+
+.game-name {
+  font-size: 20px;
+}
+
+.intro-section {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  max-width: 2000px;
+  margin: auto auto;
+}
+.intro-section .intro-content {
+  margin: 96px auto 0 auto;
+  height: auto;
+  font-weight: 500;
+}
+@media (max-width: 1600px) {
+  .intro-section .intro-content {
+    margin-inline: 40px;
+  }
+}
+.intro-section .intro-content .intro-text {
+  font-size: 25px;
+  width: 312px;
+}
+.intro-section .intro-content .dotted-rectangle {
+  background-image: url("../images/Dotted-back.png");
+  width: 184px;
+  height: 184px;
+  margin-left: -170px;
+  z-index: 10;
+}
+.intro-section .intro-content .discord p {
+  font-size: 23px;
+}
+.intro-section .intro-content .discord-link {
+  font-size: 25px;
+  text-decoration: underline;
+}
+.intro-section .main-action {
+  width: 264px;
+  margin-top: 200px;
+}
+.intro-section .main-action .action-game-image {
+  background-image: url("../images/Red_Dead_Redemption_2_coverart.jpg");
+  border-radius: 20px;
+  width: 250px;
+  height: 250px;
+  margin-bottom: 10%;
+}
+.intro-section .main-action .old-price-container {
+  margin-bottom: 10px;
+}
+.intro-section .main-action .old-price-container .old-price {
+  text-decoration: line-through;
+  margin-right: 5px;
+}
+.intro-section .main-action .old-price-container .discount {
+  background-color: var(--red);
+  padding: 1%;
+  border-radius: 20px;
+}
+
+.main-banner {
+  position: relative;
+  background-image: url("../images/kingdom-come-deliverance-2-11f6u.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  aspect-ratio: 1170/680;
+  max-width: 1170px;
+  max-height: 680px;
+  margin-left: auto;
+}
+.main-banner-offer {
+  position: absolute;
+  background-image: url("../images/Red-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 355px;
+  height: 356px;
+  top: 65%;
+  left: 5%;
+  z-index: 20;
+}
+.main-banner-offer-inner {
+  padding: 40px;
+}
+.main-banner-offer-inner h3 {
+  font-size: 25px;
+  margin: 0;
+}
+.main-banner-offer-inner p {
+  line-height: 21px;
+}
+
+.dotted-rectangle-2 {
+  background-image: url("../images/Dotted-back-2.png");
+  background-repeat: no-repeat;
+  width: 273px;
+  height: 364px;
+  position: absolute;
+  z-index: 10;
+  right: -50px;
+  top: 550px;
+}
+
+.catalog {
+  justify-content: center;
+}
+.catalog h1 {
+  text-align: center;
+  font-size: 60px;
+  font-weight: 500;
+}
+.catalog-grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  justify-content: center;
+  gap: 60px;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+.catalog-grid-container .product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 233px;
+}
+.catalog-grid-container .product-card .game-image {
+  width: 233px;
+  height: 233px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.catalog-grid-container .product-card .game-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 1700px) {
+  .catalog-grid-container {
+    grid-template-columns: repeat(5, auto);
+  }
+}
+@media (max-width: 1400px) {
+  .catalog-grid-container {
+    grid-template-columns: repeat(4, auto);
+  }
+}
+@media (max-width: 1100px) {
+  .catalog-grid-container {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+@media (max-width: 800px) {
+  .catalog-grid-container {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media (max-width: 1200px) {
+  .header-menu-icon span {
+    display: block;
+  }
+  .header-menu-body {
+    position: absolute;
+    z-index: 90;
+    top: -100%;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--yellow);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    transition: all 0.2s;
+  }
+  .header-menu-body.active {
+    top: 0;
+  }
+  .header-menu-list {
+    flex-direction: column;
+    gap: 30px;
+    margin: auto;
+    font-size: 30px;
+    text-align: center;
+  }
+  .dotted-rectangle-2 {
+    top: 105%;
+  }
+}
+@media (max-width: 900px) {
+  .intro-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .intro-section .intro-content {
+    margin-top: 200px;
+  }
+  .main-banner {
+    margin-left: 0;
+    order: -1;
+  }
+  .main-banner-offer {
+    position: relative;
+    top: 90%;
+    left: auto;
+    width: 100%;
+    height: auto;
+    background-image: url("../images/Red-background.png");
+    background-size: 100% 100%;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .main-banner-offer-inner {
+    padding: 0;
+  }
+  .main-banner-offer-inner h3 {
+    font-size: 20px;
+  }
+  .main-banner-offer-inner p {
+    font-size: 14px;
+  }
+  .main-banner-offer-inner .price-cart {
+    justify-content: center;
+  }
+  .dotted-rectangle-2 {
+    display: none;
+  }
+}
+@media (max-width: 510px) {
+  .logo {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
