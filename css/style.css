@@ -36,6 +36,7 @@ body, html {
   margin: 0;
   padding: 0;
   scrollbar-width: none;
+  overflow-x: hidden;
 }
 
 body {
@@ -44,12 +45,21 @@ body {
   background-image: var(--background-color);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 body.lock {
   overflow: hidden;
   position: fixed;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  flex: 1 0 auto;
 }
 
 a {
@@ -305,7 +315,7 @@ header .logo img {
   height: 100%;
   object-fit: cover;
 }
-@media (max-width: 1700px) {
+@media (max-width: 1750px) {
   .catalog-grid-container {
     grid-template-columns: repeat(5, auto);
   }
@@ -315,12 +325,12 @@ header .logo img {
     grid-template-columns: repeat(4, auto);
   }
 }
-@media (max-width: 1100px) {
+@media (max-width: 1150px) {
   .catalog-grid-container {
     grid-template-columns: repeat(3, auto);
   }
 }
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   .catalog-grid-container {
     grid-template-columns: repeat(2, auto);
   }
@@ -365,16 +375,18 @@ header .logo img {
   font-size: 30px;
   width: 56px;
   height: 56px;
+  flex-shrink: 0;
 }
 .categories-head .slider-buttons button:disabled {
-  cursor: not-allowed;
+  cursor: auto;
   opacity: 0.5;
 }
 .categories-grid-container {
   display: flex;
   gap: 60px;
   margin-left: 5%;
-  transition: transform 0.5s ease;
+  overflow: hidden;
+  width: 1698px;
 }
 .categories-grid-container-item {
   display: flex;
@@ -384,15 +396,165 @@ header .logo img {
   text-align: center;
   height: 314px;
   min-height: 167px;
-  min-width: 233px;
+  width: 233px;
+  flex-shrink: 0;
   border: 2px solid white;
   font-size: 20px;
   font-weight: 500;
   padding-inline: 15px;
+  transition: transform 0.5s ease;
 }
 
 .red-background {
   background-color: var(--red);
+}
+
+.steam {
+  position: relative;
+  overflow: hidden;
+}
+.steam::before {
+  content: "";
+  position: absolute;
+  top: -10;
+  left: -10;
+  width: 200%;
+  height: 200%;
+  background-size: 60px;
+  transform: rotate(15deg);
+  z-index: -1;
+  opacity: 0.2;
+}
+.steam::before {
+  background-image: url("../images/steam-logo.png");
+}
+
+.keys {
+  position: relative;
+  overflow: hidden;
+}
+.keys::before {
+  content: "";
+  position: absolute;
+  top: -10;
+  left: -10;
+  width: 200%;
+  height: 200%;
+  background-size: 60px;
+  transform: rotate(15deg);
+  z-index: -1;
+  opacity: 0.2;
+}
+.keys::before {
+  background-image: url("../images/icons/key-svgrepo-com.svg");
+}
+
+.game-consoles {
+  position: relative;
+  overflow: hidden;
+}
+.game-consoles::before {
+  content: "";
+  position: absolute;
+  top: -10;
+  left: -10;
+  width: 200%;
+  height: 200%;
+  background-size: 60px;
+  transform: rotate(15deg);
+  z-index: -1;
+  opacity: 0.2;
+}
+.game-consoles::before {
+  background-image: url("../images/icons/gamepad-controller-svgrepo-com.svg");
+}
+
+.gift-cards {
+  position: relative;
+  overflow: hidden;
+}
+.gift-cards::before {
+  content: "";
+  position: absolute;
+  top: -10;
+  left: -10;
+  width: 200%;
+  height: 200%;
+  background-size: 60px;
+  transform: rotate(15deg);
+  z-index: -1;
+  opacity: 0.2;
+}
+.gift-cards::before {
+  background-image: url("../images/icons/gift-card.svg");
+}
+
+.software {
+  position: relative;
+  overflow: hidden;
+}
+.software::before {
+  content: "";
+  position: absolute;
+  top: -10;
+  left: -10;
+  width: 200%;
+  height: 200%;
+  background-size: 60px;
+  transform: rotate(15deg);
+  z-index: -1;
+  opacity: 0.2;
+}
+.software::before {
+  background-image: url("../images/icons/monitor.svg");
+}
+
+.footer {
+  background-color: black;
+  margin-top: 150px;
+  padding: 50px 50px 35px 50px;
+  width: 100%;
+  max-width: 2000px;
+  margin: 150px auto 0 auto;
+}
+.footer a {
+  text-decoration: underline;
+  font-size: 14px;
+}
+.footer-logo {
+  height: 24px;
+  width: auto;
+}
+.footer-logo img {
+  width: 100%;
+  height: 100%;
+}
+.footer-upper-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-upper-block-links {
+  display: flex;
+  gap: 50px;
+}
+.footer .discord {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.footer-divider {
+  opacity: 0.3;
+}
+.footer-lower-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.footer-lower-block-links {
+  display: flex;
+  gap: 50px;
 }
 
 @media (max-width: 1200px) {
@@ -426,6 +588,15 @@ header .logo img {
     top: 105%;
   }
 }
+@media (max-width: 1150px) {
+  .categories-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+}
 @media (max-width: 900px) {
   .intro-section {
     flex-direction: column;
@@ -434,6 +605,9 @@ header .logo img {
   }
   .intro-section .intro-content {
     margin-top: 200px;
+  }
+  .intro-section .intro-content .intro-text {
+    text-align: center;
   }
   .main-banner {
     margin-left: 0;
@@ -465,6 +639,57 @@ header .logo img {
   }
   .dotted-rectangle-2 {
     display: none;
+  }
+}
+@media (max-width: 450px) {
+  .header-menu-list {
+    font-size: 25px;
+  }
+  .intro-section .intro-content {
+    margin-top: 250px;
+  }
+  .intro-section .dotted-rectangle {
+    display: none;
+  }
+  .catalog h1 {
+    font-size: 40px;
+  }
+  .catalog-grid-container {
+    gap: 30px;
+  }
+  .catalog-grid-container .product-card {
+    max-width: 120px;
+  }
+  .catalog-grid-container .product-card .game-image {
+    width: 120px;
+    height: 120px;
+  }
+  .catalog .price {
+    font-size: 16px;
+  }
+  .categories-head h1 {
+    font-size: 50px;
+  }
+  .categories-grid-container {
+    gap: 30px;
+  }
+  .categories-grid-container-item {
+    width: 130px;
+    height: 168px;
+    font-size: 16px;
+  }
+  .categories .discount-label {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .categories .discount-label .number {
+    width: 40px;
+    height: 40px;
+  }
+  .categories .discount-label .percent {
+    width: 30px;
+    height: 30px;
   }
 }
 
