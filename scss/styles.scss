@@ -214,12 +214,14 @@ header {
 
     .intro-content {
         margin: 96px auto 0 auto;
+        padding: 20px;
         height: auto;
         font-weight: 500;
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        max-width: 100%;
 
         @media (max-width: 1600px) {
             margin-inline: 40px;
@@ -228,6 +230,7 @@ header {
         .intro-text {
             font-size: 25px;
             width: 312px;
+            max-width: 100%;
         }
 
         .dotted-rectangle {
@@ -249,11 +252,13 @@ header {
     }
 
     .main-action {
-        width: 264px;
+        width: 250px;
         margin-top: 200px;
 
         .action-game-image {
             background-image: url("../images/Red_Dead_Redemption_2_coverart.jpg");
+            background-size: cover;
+            background-position: center;
             border-radius: 20px;
             width: 250px;
             height: 250px;
@@ -345,7 +350,7 @@ header {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            max-width: 233px;
+            width: 233px;
 
             .game-image {
                 width: 233px;
@@ -424,7 +429,6 @@ header {
                 font-size: 30px;
                 width: 56px;
                 height: 56px;
-                flex-shrink: 0;
 
                 &:disabled {
                     cursor: auto;
@@ -439,7 +443,7 @@ header {
         gap: 60px;
         margin-left: 5%;
         overflow: hidden;
-        width: calc(6 * (233px + 60px) - 60px);
+        max-width: calc(6 * (233px + 60px) - 60px);
 
         &-item {
             display: flex; 
@@ -522,17 +526,22 @@ header {
     margin-top: 150px;
     padding: 50px 50px 35px 50px;
     width: 100%;
-    max-width: 2000px;
-    margin: 150px auto 0 auto;
+
+    &-inner {
+        max-width: 2000px;
+        margin: 0 auto;
+    }
     
     a {
         text-decoration: underline;
         font-size: 14px;
+        text-align: center;
     }
 
     &-logo {
-        height: 24px;
-        width: auto;
+        max-width: 235px;
+        min-width: 150px;
+        height: auto;
 
         img {
             width: 100%;
@@ -541,20 +550,37 @@ header {
     }
 
     &-upper-block {
-        display: flex;
+        display: grid;
         align-items: center;
-        justify-content: space-between;
+        grid-template-columns: 20% 80%;
 
         &-links {
             display: flex;
-            gap: 50px;
+            margin: 40px;
+            justify-content: space-between;
+            align-items: center;  
+            
+            &-container {
+                display: flex;
+                gap: 50px;
+                align-items: center; 
+                justify-content: center;
+                flex-wrap: wrap; 
+            }
         }
-    }
 
-    .discord {
-        display: flex;
-        align-items: center;
-        gap: 20px;
+        .discord {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+    
+            @media (max-width: 1350px) {
+                flex-direction: column;
+                gap: 0;
+                
+            }
+        }
     }
 
     &-divider {
@@ -568,8 +594,13 @@ header {
         font-size: 14px;
 
         &-links {
+            align-items: center;
             display: flex;
             gap: 50px;
+
+            @media (max-width: 400px) {
+                flex-direction: column;
+            }
         }
     }
 }
@@ -592,8 +623,10 @@ header {
             flex-direction: column;
             overflow: auto;
             transition: all .2s;
+            visibility: hidden;
 
             &.active {
+                visibility: visible;
                 top: 0;
             }
         }
@@ -613,14 +646,23 @@ header {
 }
 
 @media (max-width: 1150px) {
-    .categories {
-    
-        &-head {
+    .categories-head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 40px;    
+    }
+
+    .footer {
+        &-upper-block {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 40px;    
+           
+            &-links {
+                display: flex;
+                gap: 50px;
+            }
         }
     }
 }
@@ -637,6 +679,10 @@ header {
             .intro-text {
                 text-align: center;
             }
+
+            .discord {
+                text-align: center;
+            }
         }
     }
 
@@ -645,14 +691,11 @@ header {
         order: -1;
 
         &-offer {
-            position: relative;
             top: 90%;
             left: auto;
             width: 100%;
             height: auto;
-            background-image: url("../images/Red-background.png");
             background-size: 100% 100%;
-            border-radius: 10px; 
             padding: 20px;
             text-align: center;
 
@@ -679,11 +722,30 @@ header {
     }
 }
 
-@media (max-width: 450px) {
-    .header-menu {
-        &-list {
-            font-size: 25px;
+@media (max-width: 600px) {
+    .footer {
+        &-upper-block {
+            &-links {
+                margin-top: 25px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
         }
+
+        &-lower-block {
+            flex-direction: column;
+
+            p {
+                text-align: center;
+            }
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .header-menu-list {
+        font-size: 25px;
     }
     
     .intro-section {
@@ -703,12 +765,17 @@ header {
 
         &-grid-container {
             gap: 30px;
+
             .product-card {
-                max-width: 120px;
+                width: 120px;
 
                 .game-image {
                     width: 120px;
                     height: 120px;
+                }
+
+                .game-name {
+                    font-size: 18px;
                 }
             }
         }
@@ -719,7 +786,6 @@ header {
     }
 
     .categories {
-    
         &-head {
             h1 {
                 font-size: 50px;
@@ -751,5 +817,78 @@ header {
             }
         }
         
+    }
+}
+
+@media (max-width: 320px) {
+    .header-menu-list {
+        font-size: 18px;
+    }
+
+    .intro-section {
+        .intro-content {
+            .intro-text,
+            .discord p,
+            .discord a {
+                font-size: 20px;
+            }
+        }
+
+        .main-action {
+            width: 200px;
+    
+            .action-game-image {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    }
+}
+
+@media (max-width: 280px) {
+    .intro-section {
+        .intro-content {
+            margin-top: 300px;
+
+            .intro-text,
+            .discord p,
+            .discord a {
+                font-size: 15px;
+                
+            }
+        }
+    }
+
+    .catalog {
+        h1 {
+            font-size: 30px;
+        }
+    
+        &-grid-container {
+            .product-card {
+                width: 100px;
+    
+                .game-image {
+                    width: 100px;
+                    height: 100px;
+                }
+
+                .price-cart {
+                    gap: 10px;
+
+                    .card-button {
+                        width: 30px;
+                        height: 30px;
+                        background-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    .categories-head {
+        h1 {
+            font-size: 40px;
+        }
     }
 }
