@@ -24,6 +24,7 @@
   --yellow: #FBD13E;
   --card-shadow: #0F0F1133;
   --red: #b70000;
+  --grey-text: #9EA2AA;
 }
 
 * {
@@ -66,7 +67,7 @@ a {
   text-decoration: none;
 }
 
-a, p, h3, h1, span {
+a, p, h3, h1, span, label {
   color: white;
 }
 
@@ -75,6 +76,107 @@ ul {
   padding: 0;
 }
 
+.footer {
+  background-color: black;
+  margin-top: 150px;
+  padding: 0px 50px 35px 50px;
+  width: 100%;
+}
+.footer-inner {
+  max-width: 2000px;
+  margin-inline: auto;
+}
+.footer a {
+  text-decoration: underline;
+  font-size: 14px;
+  text-align: center;
+}
+.footer-logo {
+  max-width: 235px;
+  min-width: 150px;
+  height: auto;
+}
+.footer-logo img {
+  width: 100%;
+  height: 100%;
+}
+.footer-upper-block {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 20% 80%;
+}
+.footer-upper-block-links {
+  display: flex;
+  margin: 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-upper-block-links-container {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.footer-upper-block .discord {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+@media (max-width: 1350px) {
+  .footer-upper-block .discord {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+.footer-divider {
+  opacity: 0.3;
+}
+.footer-lower-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.footer-lower-block-links {
+  align-items: center;
+  display: flex;
+  gap: 50px;
+}
+@media (max-width: 400px) {
+  .footer-lower-block-links {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1150px) {
+  .footer {
+    padding-top: 50px;
+  }
+  .footer-upper-block {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-upper-block-links {
+    display: flex;
+    gap: 50px;
+  }
+}
+@media (max-width: 600px) {
+  .footer-upper-block-links {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-lower-block {
+    flex-direction: column;
+  }
+  .footer-lower-block p {
+    text-align: center;
+  }
+}
 header {
   display: flex;
   justify-content: space-between;
@@ -154,6 +256,46 @@ header .logo img {
   z-index: 100;
 }
 
+@media (max-width: 1200px) {
+  .header-menu-icon span {
+    display: block;
+  }
+  .header-menu-body {
+    position: absolute;
+    z-index: 90;
+    top: -100%;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--yellow);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    transition: all 0.2s;
+    visibility: hidden;
+  }
+  .header-menu-body.active {
+    visibility: visible;
+    top: 0;
+  }
+  .header-menu-list {
+    flex-direction: column;
+    gap: 30px;
+    margin: auto;
+    font-size: 30px;
+    text-align: center;
+  }
+}
+@media (max-width: 450px) {
+  .header-menu-list {
+    font-size: 25px;
+  }
+}
+@media (max-width: 320px) {
+  .header-menu-list {
+    font-size: 18px;
+  }
+}
 .price-cart {
   display: flex;
   gap: 20px;
@@ -174,6 +316,19 @@ header .logo img {
   box-shadow: 0 10px 31px var(--card-shadow);
 }
 
+.old-price-container {
+  margin-bottom: 10px;
+}
+.old-price-container .old-price {
+  text-decoration: line-through;
+  margin-right: 5px;
+}
+.old-price-container .discount {
+  background-color: var(--red);
+  padding: 1%;
+  border-radius: 20px;
+}
+
 .game-name {
   font-size: 20px;
 }
@@ -186,7 +341,8 @@ header .logo img {
   margin: auto auto;
 }
 .intro-section .intro-content {
-  margin: 96px auto 0 auto;
+  margin-top: 96px;
+  margin-inline: auto;
   padding: 20px;
   height: auto;
   font-weight: 500;
@@ -233,18 +389,6 @@ header .logo img {
   height: 250px;
   margin-bottom: 10%;
 }
-.intro-section .main-action .old-price-container {
-  margin-bottom: 10px;
-}
-.intro-section .main-action .old-price-container .old-price {
-  text-decoration: line-through;
-  margin-right: 5px;
-}
-.intro-section .main-action .old-price-container .discount {
-  background-color: var(--red);
-  padding: 1%;
-  border-radius: 20px;
-}
 
 .main-banner {
   position: relative;
@@ -289,6 +433,11 @@ header .logo img {
   right: -50px;
   top: 550px;
 }
+@media (max-width: 1200px) {
+  .dotted-rectangle-2 {
+    top: 105%;
+  }
+}
 
 .catalog h1 {
   text-align: center;
@@ -301,7 +450,7 @@ header .logo img {
   justify-content: center;
   gap: 60px;
   max-width: 1800px;
-  margin: 0 auto;
+  margin-inline: auto;
 }
 .catalog-grid-container .product-card {
   display: flex;
@@ -355,12 +504,22 @@ header .logo img {
 
 .categories {
   max-width: 1900px;
-  margin: 148px auto 0 auto;
+  margin-inline: auto;
+  margin-top: 148px;
 }
 .categories-head {
   display: grid;
   grid-template-columns: 85% 15%;
   align-items: center;
+}
+@media (max-width: 1150px) {
+  .categories-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
 }
 .categories-head h1 {
   font-size: 80px;
@@ -424,13 +583,11 @@ header .logo img {
   left: -10;
   width: 200%;
   height: 200%;
+  background-image: url("../images/steam-logo.png");
   background-size: 60px;
   transform: rotate(15deg);
   z-index: -1;
   opacity: 0.2;
-}
-.steam::before {
-  background-image: url("../images/steam-logo.png");
 }
 
 .keys {
@@ -444,13 +601,11 @@ header .logo img {
   left: -10;
   width: 200%;
   height: 200%;
+  background-image: url("../images/icons/key-svgrepo-com.svg");
   background-size: 60px;
   transform: rotate(15deg);
   z-index: -1;
   opacity: 0.2;
-}
-.keys::before {
-  background-image: url("../images/icons/key-svgrepo-com.svg");
 }
 
 .game-consoles {
@@ -464,13 +619,11 @@ header .logo img {
   left: -10;
   width: 200%;
   height: 200%;
+  background-image: url("../images/icons/gamepad-controller-svgrepo-com.svg");
   background-size: 60px;
   transform: rotate(15deg);
   z-index: -1;
   opacity: 0.2;
-}
-.game-consoles::before {
-  background-image: url("../images/icons/gamepad-controller-svgrepo-com.svg");
 }
 
 .gift-cards {
@@ -484,13 +637,11 @@ header .logo img {
   left: -10;
   width: 200%;
   height: 200%;
+  background-image: url("../images/icons/gift-card.svg");
   background-size: 60px;
   transform: rotate(15deg);
   z-index: -1;
   opacity: 0.2;
-}
-.gift-cards::before {
-  background-image: url("../images/icons/gift-card.svg");
 }
 
 .software {
@@ -504,139 +655,49 @@ header .logo img {
   left: -10;
   width: 200%;
   height: 200%;
+  background-image: url("../images/icons/monitor.svg");
   background-size: 60px;
   transform: rotate(15deg);
   z-index: -1;
   opacity: 0.2;
 }
-.software::before {
-  background-image: url("../images/icons/monitor.svg");
+
+.vr {
+  position: relative;
+  overflow: hidden;
+}
+.vr::before {
+  content: "";
+  position: absolute;
+  top: -10;
+  left: -10;
+  width: 200%;
+  height: 200%;
+  background-image: url("../images/icons/vr.svg");
+  background-size: 60px;
+  transform: rotate(15deg);
+  z-index: -1;
+  opacity: 0.2;
 }
 
-.footer {
-  background-color: black;
-  margin-top: 150px;
-  padding: 50px 50px 35px 50px;
-  width: 100%;
+.game-items {
+  position: relative;
+  overflow: hidden;
 }
-.footer-inner {
-  max-width: 2000px;
-  margin: 0 auto;
-}
-.footer a {
-  text-decoration: underline;
-  font-size: 14px;
-  text-align: center;
-}
-.footer-logo {
-  max-width: 235px;
-  min-width: 150px;
-  height: auto;
-}
-.footer-logo img {
-  width: 100%;
-  height: 100%;
-}
-.footer-upper-block {
-  display: grid;
-  align-items: center;
-  grid-template-columns: 20% 80%;
-}
-.footer-upper-block-links {
-  display: flex;
-  margin: 40px;
-  justify-content: space-between;
-  align-items: center;
-}
-.footer-upper-block-links-container {
-  display: flex;
-  gap: 50px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.footer-upper-block .discord {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  text-align: center;
-}
-@media (max-width: 1350px) {
-  .footer-upper-block .discord {
-    flex-direction: column;
-    gap: 0;
-  }
-}
-.footer-divider {
-  opacity: 0.3;
-}
-.footer-lower-block {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
-}
-.footer-lower-block-links {
-  align-items: center;
-  display: flex;
-  gap: 50px;
-}
-@media (max-width: 400px) {
-  .footer-lower-block-links {
-    flex-direction: column;
-  }
+.game-items::before {
+  content: "";
+  position: absolute;
+  top: -10;
+  left: -10;
+  width: 200%;
+  height: 200%;
+  background-image: url("../images/icons/Gem-2-Streamline-Cyber.svg");
+  background-size: 60px;
+  transform: rotate(15deg);
+  z-index: -1;
+  opacity: 0.2;
 }
 
-@media (max-width: 1200px) {
-  .header-menu-icon span {
-    display: block;
-  }
-  .header-menu-body {
-    position: absolute;
-    z-index: 90;
-    top: -100%;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--yellow);
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    transition: all 0.2s;
-    visibility: hidden;
-  }
-  .header-menu-body.active {
-    visibility: visible;
-    top: 0;
-  }
-  .header-menu-list {
-    flex-direction: column;
-    gap: 30px;
-    margin: auto;
-    font-size: 30px;
-    text-align: center;
-  }
-  .dotted-rectangle-2 {
-    top: 105%;
-  }
-}
-@media (max-width: 1150px) {
-  .categories-head {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 40px;
-  }
-  .footer-upper-block {
-    display: flex;
-    flex-direction: column;
-  }
-  .footer-upper-block-links {
-    display: flex;
-    gap: 50px;
-  }
-}
 @media (max-width: 900px) {
   .intro-section {
     flex-direction: column;
@@ -681,24 +742,7 @@ header .logo img {
     display: none;
   }
 }
-@media (max-width: 600px) {
-  .footer-upper-block-links {
-    margin-top: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .footer-lower-block {
-    flex-direction: column;
-  }
-  .footer-lower-block p {
-    text-align: center;
-  }
-}
 @media (max-width: 450px) {
-  .header-menu-list {
-    font-size: 25px;
-  }
   .intro-section .intro-content {
     margin-top: 250px;
   }
@@ -750,9 +794,6 @@ header .logo img {
   }
 }
 @media (max-width: 320px) {
-  .header-menu-list {
-    font-size: 18px;
-  }
   .intro-section .intro-content .intro-text,
   .intro-section .intro-content .discord p,
   .intro-section .intro-content .discord a {
@@ -798,4 +839,4 @@ header .logo img {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=index.css.map */

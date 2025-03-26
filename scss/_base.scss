@@ -1,0 +1,88 @@
+
+//sass www/scss/_base.scss:www/css/base.css
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Medium.woff2') format('woff2'),
+         url('fonts/Montserrat-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-ExtraBold.woff2') format('woff2'),
+         url('fonts/Montserrat-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Regular.woff2') format('woff2'),
+         url('fonts/Montserrat-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --background-color: linear-gradient(135deg, rgb(5, 56, 106), rgb(10, 16, 22) 59%);
+    --yellow: #FBD13E;
+    --card-shadow: #0F0F1133;
+    --red: #b70000;
+    --grey-text: #9EA2AA;
+}
+
+* {
+    // outline: solid red;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    scrollbar-width: none;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Montserrat", Arial;
+    background-color: rgb(10, 16, 22);
+    background-image: var(--background-color);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+
+    &.lock {
+        overflow: hidden;
+        position: fixed;
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+a, p, h3, h1, span, label {
+    color: white;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}

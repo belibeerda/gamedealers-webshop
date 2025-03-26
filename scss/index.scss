@@ -1,182 +1,9 @@
-//sass --watch scss/styles.scss:css/style.css
 
-@font-face {
-    font-family: 'Montserrat';
-    src: url('fonts/Montserrat-Medium.woff2') format('woff2'),
-         url('fonts/Montserrat-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
+//sass www/scss/index.scss:www/css/index.css
 
-@font-face {
-    font-family: 'Montserrat';
-    src: url('fonts/Montserrat-ExtraBold.woff2') format('woff2'),
-         url('fonts/Montserrat-ExtraBold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    src: url('fonts/Montserrat-Regular.woff2') format('woff2'),
-         url('fonts/Montserrat-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-:root {
-    --background-color: linear-gradient(135deg, rgb(5, 56, 106), rgb(10, 16, 22) 59%);
-    --yellow: #FBD13E;
-    --card-shadow: #0F0F1133;
-    --red: #b70000;
-}
-
-* {
-    // outline: solid red;
-    box-sizing: border-box;
-}
-
-body, html {
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    scrollbar-width: none;
-    overflow-x: hidden;
-}
-
-body {
-    font-family: "Montserrat", Arial;
-    background-color: rgb(10, 16, 22);
-    background-image: var(--background-color);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    scroll-behavior: smooth;
-
-    &.lock {
-        overflow: hidden;
-        position: fixed;
-    }
-}
-
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.content {
-    flex: 1 0 auto;
-}
-
-a {
-    text-decoration: none;
-}
-
-a, p, h3, h1, span {
-    color: white;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1500px;
-    height: 30px;
-    margin: 32px auto 44px auto;
-    padding-inline: 20px;
-
-    .logo {
-        img {
-            position: relative;
-            height: 30px;
-            z-index: 100;
-        }
-
-        @media (max-width: 510px) {
-            display: none;
-        }
-    }
-    
-}
-
-.header-menu {
-    display: flex;
-    font-weight: 500;
-    font-size: 14px;
-    align-items: center;
-    width: auto;
-
-    &-list {
-        display: flex;
-        gap: 20px;
-        transition: .5s;
-        margin: 0;
-
-        .link:hover {
-            text-decoration: underline;
-        }
-    }
-
-    &-icon {
-        display: block;
-        width: 30px;
-        height: 18px;
-        position: relative;
-        cursor: pointer;
-        padding: 5px;
-
-        span {
-            position: absolute;
-            top: calc(50% - 1px);
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: white;
-            z-index: 100;
-            display: none;
-
-            &:first-child {
-                top: 0;
-            }
-
-            &:last-child {
-                top: auto;
-                bottom: 0;
-            }
-        }
-
-        &.active {
-            span {
-                transform: scale(0);
-
-                &:first-child {
-                    transform: rotate(-45deg);
-                    top: calc(50% - 1px);
-                }
-
-                &:last-child {
-                    transform: rotate(45deg);
-                    top: calc(50% - 1px);
-                }
-            }
-        }
-    }
-}
-
-.buttons-container {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    z-index: 100;
-}
+@use 'base';
+@use 'footer';
+@use 'header';
 
 .price-cart {
     display: flex;
@@ -200,6 +27,21 @@ header {
     }
 }
 
+.old-price-container {
+    margin-bottom: 10px;
+
+    .old-price {
+        text-decoration: line-through;
+        margin-right: 5px;
+    }
+
+    .discount {
+        background-color: var(--red);
+        padding: 1%;
+        border-radius: 20px;
+    }
+}
+
 .game-name {
     font-size: 20px;
 }
@@ -213,7 +55,9 @@ header {
     margin: auto auto;
 
     .intro-content {
-        margin: 96px auto 0 auto;
+        // margin: 96px auto 0 auto;
+        margin-top: 96px;
+        margin-inline: auto;
         padding: 20px;
         height: auto;
         font-weight: 500;
@@ -264,21 +108,6 @@ header {
             height: 250px;
             margin-bottom: 10%;
         }
-
-        .old-price-container {
-            margin-bottom: 10px;
-
-            .old-price {
-                text-decoration: line-through;
-                margin-right: 5px;
-            }
-
-            .discount {
-                background-color: var(--red);
-                padding: 1%;
-                border-radius: 20px;
-            }
-        }
     }
 }
 
@@ -328,6 +157,10 @@ header {
         z-index: 10;
         right: -50px;
         top: 550px;
+
+        @media (max-width: 1200px) {
+            top: 105%;
+        }
 }
 
 
@@ -344,7 +177,8 @@ header {
         justify-content: center;
         gap: 60px;
         max-width: 1800px;
-        margin: 0 auto;
+        // margin: 0 auto;
+        margin-inline: auto;
 
         .product-card {
             display: flex;
@@ -403,12 +237,23 @@ header {
 
 .categories {
     max-width: 1900px;
-    margin: 148px auto 0 auto;
+    // margin: 148px auto 0 auto;
+    margin-inline: auto;
+    margin-top: 148px;
 
     &-head {
         display: grid;
         grid-template-columns: 85% 15%;
         align-items: center;
+
+        @media (max-width: 1150px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;    
+        }
+        
         
         h1 {
             font-size: 80px;
@@ -468,7 +313,7 @@ header {
     background-color: var(--red);
 }
 
-@mixin Repeat-background {
+@mixin Repeat-background($pathToBackground) {
     position: relative;
     overflow: hidden;
 
@@ -479,6 +324,7 @@ header {
         left: -10;
         width: 200%;
         height: 200%;
+        background-image: url($pathToBackground);
         background-size: 60px;
         transform: rotate(15deg);
         z-index: -1;
@@ -487,184 +333,31 @@ header {
 }
 
 .steam {
-    @include Repeat-background();
-    &::before {
-        background-image: url("../images/steam-logo.png");
-    }
+    @include Repeat-background("../images/steam-logo.png");
 }
 
 .keys {
-    @include Repeat-background();
-    &::before {
-        background-image: url("../images/icons/key-svgrepo-com.svg");
-    }
+    @include Repeat-background("../images/icons/key-svgrepo-com.svg");
 }
 
 .game-consoles {
-    @include Repeat-background();
-    &::before {
-        background-image: url("../images/icons/gamepad-controller-svgrepo-com.svg");
-    }
+    @include Repeat-background("../images/icons/gamepad-controller-svgrepo-com.svg");
 }
 
 .gift-cards {
-    @include Repeat-background();
-    &::before {
-        background-image: url("../images/icons/gift-card.svg");
-    }
+    @include Repeat-background("../images/icons/gift-card.svg");
 }
 
 .software {
-    @include Repeat-background();
-    &::before {
-        background-image: url("../images/icons/monitor.svg");
-    }
+    @include Repeat-background("../images/icons/monitor.svg");
 }
 
-.footer {
-    background-color: black;
-    margin-top: 150px;
-    padding: 50px 50px 35px 50px;
-    width: 100%;
-
-    &-inner {
-        max-width: 2000px;
-        margin: 0 auto;
-    }
-    
-    a {
-        text-decoration: underline;
-        font-size: 14px;
-        text-align: center;
-    }
-
-    &-logo {
-        max-width: 235px;
-        min-width: 150px;
-        height: auto;
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    &-upper-block {
-        display: grid;
-        align-items: center;
-        grid-template-columns: 20% 80%;
-
-        &-links {
-            display: flex;
-            margin: 40px;
-            justify-content: space-between;
-            align-items: center;  
-            
-            &-container {
-                display: flex;
-                gap: 50px;
-                align-items: center; 
-                justify-content: center;
-                flex-wrap: wrap; 
-            }
-        }
-
-        .discord {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            text-align: center;
-    
-            @media (max-width: 1350px) {
-                flex-direction: column;
-                gap: 0;
-                
-            }
-        }
-    }
-
-    &-divider {
-        opacity: 0.3;
-    }
-
-    &-lower-block {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 14px;
-
-        &-links {
-            align-items: center;
-            display: flex;
-            gap: 50px;
-
-            @media (max-width: 400px) {
-                flex-direction: column;
-            }
-        }
-    }
+.vr {
+    @include Repeat-background("../images/icons/vr.svg");
 }
 
-@media (max-width: 1200px) {
-    .header-menu {
-        &-icon span {
-            display: block;
-        }
-
-        &-body {
-            position: absolute;
-            z-index: 90;
-            top: -100%;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--yellow);
-            display: flex;
-            flex-direction: column;
-            overflow: auto;
-            transition: all .2s;
-            visibility: hidden;
-
-            &.active {
-                visibility: visible;
-                top: 0;
-            }
-        }
-
-        &-list {
-            flex-direction: column;
-            gap: 30px;
-            margin: auto;
-            font-size: 30px;
-            text-align: center;
-        }
-    }
-
-    .dotted-rectangle-2 {
-        top: 105%;
-    }
-}
-
-@media (max-width: 1150px) {
-    .categories-head {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 40px;    
-    }
-
-    .footer {
-        &-upper-block {
-            display: flex;
-            flex-direction: column;
-           
-            &-links {
-                display: flex;
-                gap: 50px;
-            }
-        }
-    }
+.game-items {
+    @include Repeat-background("../images/icons/Gem-2-Streamline-Cyber.svg");
 }
 
 @media (max-width: 900px) {
@@ -722,31 +415,7 @@ header {
     }
 }
 
-@media (max-width: 600px) {
-    .footer {
-        &-upper-block {
-            &-links {
-                margin-top: 25px;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-
-        &-lower-block {
-            flex-direction: column;
-
-            p {
-                text-align: center;
-            }
-        }
-    }
-}
-
 @media (max-width: 450px) {
-    .header-menu-list {
-        font-size: 25px;
-    }
     
     .intro-section {
         .intro-content {
@@ -821,10 +490,6 @@ header {
 }
 
 @media (max-width: 320px) {
-    .header-menu-list {
-        font-size: 18px;
-    }
-
     .intro-section {
         .intro-content {
             .intro-text,
