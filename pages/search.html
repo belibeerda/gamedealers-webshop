@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/feedback.css">
-    <title>GameDealers — Обратная связь</title>
+    <link rel="stylesheet" href="../css/search.css">
+    <title>GameDealers — Поиск</title>
 </head>
 <body>
     <div class="wrapper">
@@ -40,21 +40,11 @@
             </header>
             
             <main class="main">
-                <div class="feedback-container">
-                    <h1>Обратная связь</h1>
-                    <form class="feedback-container-form">
-                        <label for="feedback-text">Ваш вопрос, отзыв или пожелание:</label>
-                        <textarea id="feedback-text" name="feedback-text"></textarea>
-                        <label for="email">email для получения ответа</label>
-                        <input id="email" name="user-email" type="email">
-                        <button type="submit">Отправить</button>
-                    </form>
-                    
-                </div>
-                <div class="dotted-rectangle-container">
-                    <div class="dotted-rectangle-1"></div>
-                    <div class="dotted-rectangle-2"></div>
-                </div>
+                <form id="searchForm">
+                    <input type="text" id="searchInput" placeholder="Введите название или тег...">
+                    <button type="submit">Найти</button>
+                  </form>
+                  <div class="catalog-grid-container"></div>
             </main>
         </div>
         <footer class="footer">
@@ -92,5 +82,7 @@
         </footer>
     </div>
     <script src="../js/burgerMenu.js"></script>
+    <script src="../js/googleSheetsUploadData.js"></script>
+    
 </body>
 </html>
