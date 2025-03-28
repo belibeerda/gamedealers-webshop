@@ -87,9 +87,20 @@
 }
 
 @media (max-width: 600px) {
+    .price-cart {
+        flex-direction: column;
+        align-items: center;
+        
+        .card-button {
+            width: 100%;
+            max-width: 150px;
+        }
+    }
     .catalog-grid-container {
         .product-card {
             max-width: 160px;
+            text-align: center;
+            // justify-content: center;
 
             .game-image {
                 width: 160px;
@@ -134,12 +145,6 @@
 
             .price-cart {
                 gap: 10px;
-
-                .card-button {
-                    width: 30px;
-                    height: 30px;
-                    background-size: 20px;
-                }
             }
         }
     }

@@ -380,8 +380,17 @@ header .logo img {
 }
 
 @media (max-width: 600px) {
+  .price-cart {
+    flex-direction: column;
+    align-items: center;
+  }
+  .price-cart .card-button {
+    width: 100%;
+    max-width: 150px;
+  }
   .catalog-grid-container .product-card {
     max-width: 160px;
+    text-align: center;
   }
   .catalog-grid-container .product-card .game-image {
     width: 160px;
@@ -417,11 +426,6 @@ header .logo img {
   .catalog-grid-container .product-card .price-cart {
     gap: 10px;
   }
-  .catalog-grid-container .product-card .price-cart .card-button {
-    width: 30px;
-    height: 30px;
-    background-size: 20px;
-  }
 }
 #searchForm {
   display: flex;
@@ -429,12 +433,24 @@ header .logo img {
   margin-bottom: 40px;
   gap: 15px;
   align-items: center;
+  padding-inline: 20px;
+}
+@media (max-width: 500px) {
+  #searchForm {
+    flex-direction: column;
+  }
 }
 
 #searchInput {
   font-family: "Montserrat";
   padding: 8px;
   width: 300px;
+  height: 42px;
+}
+@media (max-width: 300px) {
+  #searchInput {
+    width: 200px;
+  }
 }
 
 button {
