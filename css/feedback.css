@@ -298,6 +298,8 @@ header .logo img {
 }
 .main {
   display: flex;
+  max-width: 1900px;
+  margin-inline: auto;
 }
 
 .feedback-container {

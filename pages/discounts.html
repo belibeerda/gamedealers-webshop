@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/search.css">
-    <title>GameDealers — Поиск</title>
+    <link rel="stylesheet" href="../css/discounts.css">
+    <title>GameDealers — Акции</title>
 </head>
 <body>
     <div class="wrapper">
@@ -38,17 +38,34 @@
                     <a href="#"><img src="../images/icons/Cart.svg" alt="Cart icon" title="Корзина"></a>
                 </div>
             </header>
-
+            
             <main class="main">
-                <div class="search-head">
-                    <h1>Все товары</h1>
-                    <form class="search-form">
-                        <input type="text" class="search-form-input" placeholder="Введите название или тег...">
-                        <button type="submit">Найти</button>
-                    </form>
+                <h1 class="page-title">Акции</h1>
+
+                <div class="promo-slider">
+                    <div class="promo-slider-container">
+                    </div>
+                    <div class="promo-slider-buttons">
+                        <button class="slider-button prev" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" fill="white"/>
+                            </svg>
+                        </button>
+                        <button class="slider-button next" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="white"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="promo-slider-pagination"></div>
                 </div>
                 
-                <div class="catalog-grid-container"></div>
+                <form class="search-form" id="discounts-search-form-input">
+                    <input 
+                        type="text" class="search-form-input" placeholder="Введите название или тег...">
+                    <button type="submit">Найти</button>
+                </form>
+                <div class="catalog-grid-container" id="discounts-container"></div>
             </main>
         </div>
         <footer class="footer">
@@ -86,7 +103,7 @@
         </footer>
     </div>
     <script src="../js/burgerMenu.js"></script>
-    <script src="../js/googleSheetsUploadAllData.js"></script>
-    
+    <script src="../js/googleSheetsUploadDiscounts.js"></script>
+    <script src="../js/discountsScroller.js"></script>
 </body>
 </html>

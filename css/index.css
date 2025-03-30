@@ -591,6 +591,9 @@ header .logo img {
   font-size: 30px;
   width: 56px;
   height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .categories-head .slider-buttons button:disabled {
   cursor: auto;
