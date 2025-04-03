@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
 
-    // Элементы слайдера
     const sliderContainer = document.querySelector('.promo-slider-container');
     const pagination = document.querySelector('.promo-slider-pagination');
     const prevBtn = document.querySelector('.slider-button.prev');
@@ -29,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Создаем баннеры
     banners.forEach((banner, index) => {
-        // Добавляем слайд
         const slide = document.createElement('div');
         slide.className = 'promo-slider-banner';
         slide.style.backgroundImage = banner.image;
@@ -68,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
         goToSlide(currentSlide - 1);
     }
 
-    // Автопрокрутка
     function startAutoSlide() {
         autoSlideInterval = setInterval(nextSlide, 5000);
     }
@@ -81,13 +78,13 @@ document.addEventListener('DOMContentLoaded', function() {
     nextBtn.addEventListener('click', () => {
         nextSlide();
         stopAutoSlide();
-        startAutoSlide();
+        // startAutoSlide();
     });
 
     prevBtn.addEventListener('click', () => {
         prevSlide();
         stopAutoSlide();
-        startAutoSlide();
+        // startAutoSlide();
     });
 
     // При наведении останавливаем автопрокрутку

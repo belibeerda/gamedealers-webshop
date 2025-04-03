@@ -25,6 +25,7 @@
   --card-shadow: #0F0F1133;
   --red: #b70000;
   --grey-text: #9EA2AA;
+  --dark-blue: #09234E;
 }
 
 * {
@@ -67,7 +68,7 @@ a {
   text-decoration: none;
 }
 
-a, p, h3, h1, span, label {
+a, p, h1, h2, h3, span, label {
   color: white;
 }
 
@@ -189,6 +190,11 @@ header .logo img {
   position: relative;
   height: 30px;
   z-index: 100;
+  transition: filter 0.5s ease-out;
+  filter: invert(0);
+}
+header .logo.black img {
+  filter: invert(1);
 }
 @media (max-width: 510px) {
   header .logo {
@@ -213,7 +219,7 @@ header .logo img {
   text-decoration: underline;
 }
 .header-menu-icon {
-  display: block;
+  display: none;
   width: 30px;
   height: 18px;
   position: relative;
@@ -255,10 +261,23 @@ header .logo img {
   gap: 25px;
   z-index: 100;
 }
+.buttons-container svg {
+  transition: fill 0.5s ease-out;
+  fill: white;
+}
+.buttons-container.black svg {
+  fill: black;
+}
 
-@media (max-width: 1200px) {
+@media (max-width: 1180px) {
+  .header-menu-icon {
+    display: block;
+  }
   .header-menu-icon span {
     display: block;
+  }
+  .header-menu-icon.active span {
+    background-color: black;
   }
   .header-menu-body {
     position: absolute;
@@ -284,6 +303,9 @@ header .logo img {
     margin: auto;
     font-size: 30px;
     text-align: center;
+  }
+  .header-menu-list a {
+    color: black;
   }
 }
 @media (max-width: 450px) {

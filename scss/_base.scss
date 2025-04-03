@@ -33,6 +33,7 @@
     --card-shadow: #0F0F1133;
     --red: #b70000;
     --grey-text: #9EA2AA;
+    --dark-blue: #09234E;
 }
 
 * {
@@ -77,7 +78,7 @@ a {
     text-decoration: none;
 }
 
-a, p, h3, h1, span, label {
+a, p, h1, h2, h3, span, label {
     color: white;
 }
 
