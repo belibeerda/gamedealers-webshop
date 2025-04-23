@@ -22,10 +22,13 @@
 :root {
   --background-color: linear-gradient(135deg, rgb(5, 56, 106), rgb(10, 16, 22) 59%);
   --yellow: #FBD13E;
+  --dark-yellow: #DAA520;
   --card-shadow: #0F0F1133;
   --red: #b70000;
+  --bright-red: #FF3333;
   --grey-text: #9EA2AA;
   --dark-blue: #09234E;
+  --link-blue: #0074D9;
 }
 
 * {
@@ -218,6 +221,9 @@ header .logo.black img {
 .header-menu-list .link:hover {
   text-decoration: underline;
 }
+.header-menu-list .to-home {
+  display: none;
+}
 .header-menu-icon {
   display: none;
   width: 30px;
@@ -307,6 +313,9 @@ header .logo.black img {
   .header-menu-list a {
     color: black;
   }
+  .header-menu-list .to-home {
+    display: block;
+  }
 }
 @media (max-width: 450px) {
   .header-menu-list {
@@ -336,6 +345,7 @@ header .logo.black img {
   height: 42px;
   border-radius: 5px;
   box-shadow: 0 10px 31px var(--card-shadow);
+  cursor: pointer;
 }
 
 .old-price-container {

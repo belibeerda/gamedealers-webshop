@@ -47,6 +47,10 @@ header {
         .link:hover {
             text-decoration: underline;
         }
+
+        .to-home {
+            display: none;
+        }
     }
 
     &-icon {
@@ -159,6 +163,10 @@ header {
             
             a {
                 color: black;
+            }
+
+            .to-home {
+                display: block;
             }
         }
     }

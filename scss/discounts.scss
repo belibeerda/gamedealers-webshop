@@ -6,6 +6,11 @@
 
 .page-title {
     text-align: center;
+    font-size: 80px;
+
+    @media (max-width: 330px) {
+        font-size: 50px;
+    }
 }
 
 #discounts-search-form-input {

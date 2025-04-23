@@ -1,5 +1,4 @@
 //sass scss/_productGrid.scss:css/productGrid.css
-// 
 
 .price-cart {
     display: flex;
@@ -20,6 +19,7 @@
         height: 42px;
         border-radius: 5px;
         box-shadow: 0 10px 31px var(--card-shadow);
+        cursor: pointer;
     }
 }
 

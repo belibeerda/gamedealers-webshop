@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/feedback.css">
+    <link rel="stylesheet" href="../css/product.css">
     <link rel="icon" type="image/x-icon" href="../images/icons/Gicon.svg">
-    <title>GameDealers — Обратная связь</title>
+    <title>Карточка товара</title>
 </head>
 <body>
     <div class="wrapper">
@@ -59,20 +59,28 @@
             </header>
             
             <main class="main">
-                <div class="feedback-container">
-                    <h1>Обратная связь</h1>
-                    <form class="feedback-container-form">
-                        <label for="feedback-text">Ваш вопрос, отзыв или пожелание:</label>
-                        <textarea id="feedback-text" name="feedback-text"></textarea>
-                        <label for="email">email для получения ответа</label>
-                        <input id="email" name="user-email" type="email">
-                        <button type="submit">Отправить</button>
-                    </form>
-                </div>
-                <div class="dotted-rectangle-container">
-                    <div class="dotted-rectangle-1"></div>
-                    <div class="dotted-rectangle-2"></div>
-                </div>
+                <main class="product">
+                    <div class="product-gallery">
+                        <img id="product-gallery-image" src="" alt="Изображение товара">
+                    </div>
+                    
+                    <div class="product-info">
+                        <h1 id="product-title">Тестовая игра</h1>
+                        <p id="product-description" class="description"></p>
+                        <div id="product-tags" class="tags-container">
+                            <p></p>
+                        </div>
+                        
+                        <div class="old-price-container">
+                            <span class="old-price"></span>
+                            <span class="discount"></span>
+                        </div>
+                        <div class="new-price">
+                            <span class="price"></span>
+                        </div>
+                        
+                        <button class="buy-button">Купить</button>
+                    </div>
             </main>
         </div>
         <footer class="footer">
@@ -110,17 +118,7 @@
         </footer>
     </div>
 
-    <div class="modal-overlay" id="modal-overlay">
-        <div class="modal">
-          <div class="modal-content">
-            <h2>Спасибо за обратную связь!</h2>
-            <p>Ваше сообщение успешно отправлено. Мы ответим вам на указанный email в ближайшее время.</p>
-            <button id="modal-ok-button" class="modal-button">OK</button>
-          </div>
-        </div>
-    </div>
-
     <script src="../js/burgerMenu.js"></script>
-    <script src="../js/feedbackModal.js"></script>
+    <script src="../js/googleSheetsUploadOneProduct.js"></script>
 </body>
 </html>

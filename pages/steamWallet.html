@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/feedback.css">
+    <link rel="stylesheet" href="../css/steamWallet.css">
     <link rel="icon" type="image/x-icon" href="../images/icons/Gicon.svg">
-    <title>GameDealers — Обратная связь</title>
+    <title>Пополнение баланса Steam</title>
 </head>
 <body>
     <div class="wrapper">
@@ -59,19 +59,31 @@
             </header>
             
             <main class="main">
-                <div class="feedback-container">
-                    <h1>Обратная связь</h1>
-                    <form class="feedback-container-form">
-                        <label for="feedback-text">Ваш вопрос, отзыв или пожелание:</label>
-                        <textarea id="feedback-text" name="feedback-text"></textarea>
-                        <label for="email">email для получения ответа</label>
-                        <input id="email" name="user-email" type="email">
-                        <button type="submit">Отправить</button>
+                <div class="replenishment-container">
+                    <h1 class="replenishment-container-title">Пополнение баланса Steam</h1>
+
+                    <form class="replenishment-container-form">
+                        <div class="replenishment-container-form-input">
+                            <label for="login">Логин Steam</label>
+                            <input id="login" name="login-steam" type="input" placeholder="Логин">
+                        </div>
+                        <div class="replenishment-container-form-input">
+                            <label for="amount">Сумма&nbsp;&#8381;</label>
+                            <input id="amount" name="amount-deposit" type="input" placeholder="Сумма от 100 &#8381;">
+                        </div>
+                        <button>Купить</button>
                     </form>
                 </div>
-                <div class="dotted-rectangle-container">
-                    <div class="dotted-rectangle-1"></div>
-                    <div class="dotted-rectangle-2"></div>
+
+                <div class="info-block">
+                    <p>Минимальная сумма пополнения <span>100 рублей</span></p>
+                    <p>Комиссия <span>10%</span></p>
+                    <p>Инструкция:</p>
+                    <p>1. Введите логин вашего Steam аккаунта. Именно Логин, а не никнейм вашего аккаунта. <a href="#">Подробнее</a></p>
+                    <p>2. Введите сумму пополнения и нажмите кнопку &laquo;Купить&raquo;</p>
+                    <p>3. Пополнение стим появится у вас в корзине, где вы можете выбрать способ оплаты, и оплатить</p>
+                    <p>4. Перед оплатой проверте сумму и логин</p>
+                    <p>5. После успешной оплаты деньги поступят на аккаунт в течении 5 минут</p>
                 </div>
             </main>
         </div>
@@ -110,17 +122,6 @@
         </footer>
     </div>
 
-    <div class="modal-overlay" id="modal-overlay">
-        <div class="modal">
-          <div class="modal-content">
-            <h2>Спасибо за обратную связь!</h2>
-            <p>Ваше сообщение успешно отправлено. Мы ответим вам на указанный email в ближайшее время.</p>
-            <button id="modal-ok-button" class="modal-button">OK</button>
-          </div>
-        </div>
-    </div>
-
     <script src="../js/burgerMenu.js"></script>
-    <script src="../js/feedbackModal.js"></script>
 </body>
 </html>

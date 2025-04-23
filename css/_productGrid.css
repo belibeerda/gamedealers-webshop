@@ -16,6 +16,7 @@
   height: 42px;
   border-radius: 5px;
   box-shadow: 0 10px 31px var(--card-shadow);
+  cursor: pointer;
 }
 
 .old-price-container {

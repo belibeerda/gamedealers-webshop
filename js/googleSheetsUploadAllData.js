@@ -70,8 +70,8 @@ document.addEventListener('DOMContentLoaded', function() {
       return `
       <div class="product-card">
         <div class="game-image">
-          <a href="#">
-            ${product.image ? `<img src="${product.image}" alt="${product.name}">` : '<div class="no-image">Нет изображения</div>'}
+          <a href="${product.link}">
+            ${product.image ? `<img src="../images/${product.image}" alt="${product.name}">` : '<div class="no-image">Нет изображения</div>'}
           </a>
         </div>
         <a href="#">

@@ -38,6 +38,9 @@ header .logo.black img {
 .header-menu-list .link:hover {
   text-decoration: underline;
 }
+.header-menu-list .to-home {
+  display: none;
+}
 .header-menu-icon {
   display: none;
   width: 30px;
@@ -126,6 +129,9 @@ header .logo.black img {
   }
   .header-menu-list a {
     color: black;
+  }
+  .header-menu-list .to-home {
+    display: block;
   }
 }
 @media (max-width: 450px) {

@@ -15,9 +15,14 @@
 
   h1 {
     margin-left: 50px;
+    font-size: 60px;
+
+    @media (max-width: 400px) {
+      font-size: 30px;
+    }
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     flex-direction: column;
 
     h1 {

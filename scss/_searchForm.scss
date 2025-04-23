@@ -4,15 +4,17 @@
   margin-inline: auto;
   gap: 15px;
   align-items: center;
+  max-width: 100%;
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     flex-direction: column;
   }
 
   &-input {
     font-family: 'Montserrat';
     padding: 8px;
-    width: 300px;
+    width: 500px;
+    max-width: 90%;
     height: 42px;
 
     @media (max-width: 300px) {
