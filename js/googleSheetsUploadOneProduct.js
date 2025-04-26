@@ -51,12 +51,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function populateProductData(product) {
         // Основная информация
         document.getElementById('product-title').textContent = product.name;
-        document.getElementById('product-gallery-image').src = "../images/" + product.image;
-        document.getElementById('product-gallery-image').alt = product.name;
+        //document.getElementById('product-gallery-image').src = "../images/" + product.image;
+        //document.getElementById('product-gallery-image').alt = product.name;
         document.getElementById('product-description').textContent = product.description;
         
         // Цена и скидка
-        const priceElement = document.querySelector('.price');
+        const priceElement = document.querySelector('.new-price');
         const oldPriceElement = document.querySelector('.old-price');
         const discountElement = document.querySelector('.discount');
         
@@ -74,20 +74,108 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.old-price-container').style.display = 'none';
         }
         
-        // Теги
-        const tagsContainer = document.getElementById('product-tags');
-        tagsContainer.innerHTML = ''; // Очищаем контейнер
-        
-        if (product.tags && product.tags.trim() !== '') {
-            const tags = product.tags.split(',');
-            tags.forEach(tag => {
-                const tagElement = document.createElement('span');
-                tagElement.className = 'tag';
-                tagElement.textContent = tag.trim();
-                tagsContainer.appendChild(tagElement);
+        // Жанры
+        // В функции populateProductData замените блок обработки тегов на:
+        if (product.genres && product.genres.trim() !== '') {
+            const genresContainer = document.getElementById('product-genres');
+            //genresContainer.innerHTML = ''; // Очищаем контейнер
+            const genresTitle = document.getElementsByClassName('genresTitle')[0];
+            genresTitle.textContent = "Жанры:";
+            // genresTitle.className = 'genresTitle';
+            // genresTitle.textContent = "Жанры:";
+            // genresContainer.appendChild(genresTitle);
+            
+            // Разделяем теги по запятой и убираем лишние пробелы
+            const genres = product.genres.split(',')
+                            .map(genre => genre.trim())
+                            .filter(genre => genre.length > 0);
+            
+            // Создаем элементы для каждого тега
+            genres.forEach(genre => {
+                // const genreElement = document.createElement('a');
+                // genreElement.className = 'genre';
+                // genreElement.textContent = genre;
+                // genreElement.href = "#";
+                // genresContainer.appendChild(genreElement);
+
+                const genreWrapper = document.createElement('div');
+                genreWrapper.className = 'genre'; // Добавляем класс для стилизации
+
+                // Создаем ссылку
+                const genreElement = document.createElement('a');
+                genreElement.className = 'genre-link';
+                genreElement.textContent = genre;
+                genreElement.href = "#"; // Устанавливаем href
+
+                // Добавляем ссылку внутрь div-обертки
+                genreWrapper.appendChild(genreElement);
+
+                // Добавляем div-обертку в контейнер жанров
+                genresContainer.appendChild(genreWrapper);
             });
         }
-        
+
+
+        if (product.screenshots && product.screenshots.trim() !== '') {
+            const screenshots = product.screenshots
+                                    .split(',')
+                                    .map(url => url.trim())
+                                    .filter(url => url.length > 0)
+                                    .map(url => `../images/screenshots/${url}`);
+            
+            const thumbnailsContainer = document.getElementById('screenshots-thumbnails');
+            const mainImage = document.getElementById('main-screenshot');
+            
+            // Загружаем первое изображение
+            if (screenshots.length > 0) {
+                mainImage.src = screenshots[0];
+                mainImage.alt = `Скриншот 1 из ${screenshots.length}`;
+            }
+            
+            // Создаём миниатюры
+            screenshots.forEach((url, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = url;
+                thumb.alt = `Скриншот ${index + 1}`;
+                thumb.classList.add('thumbnail');
+                
+                thumb.addEventListener('click', () => {
+                    mainImage.src = url;
+                    mainImage.alt = `Скриншот ${index + 1} из ${screenshots.length}`;
+                    
+                    // Обновляем активную миниатюру
+                    document.querySelectorAll('.thumbnail').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    thumb.classList.add('active');
+                });
+                
+                if (index === 0) thumb.classList.add('active');
+                thumbnailsContainer.appendChild(thumb);
+            });
+            
+            // Навигация
+            let currentIndex = 0;
+            document.querySelector('.gallery-next').addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % screenshots.length;
+                updateMainImage(screenshots[currentIndex], currentIndex);
+            });
+            
+            document.querySelector('.gallery-prev').addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + screenshots.length) % screenshots.length;
+                updateMainImage(screenshots[currentIndex], currentIndex);
+            });
+            
+            function updateMainImage(url, index) {
+                mainImage.src = url;
+                mainImage.alt = `Скриншот ${index + 1} из ${screenshots.length}`;
+                
+                document.querySelectorAll('.thumbnail').forEach((t, i) => {
+                    t.classList.toggle('active', i === index);
+                });
+            }
+        }
+
         // Кнопка "Купить" (можно добавить ссылку)
         document.querySelector('.buy-button').addEventListener('click', function() {
             // Здесь можно добавить логику покупки
@@ -99,9 +187,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function showErrorMessage() {
         document.querySelector('main').innerHTML = `
             <div class="error-message">
-                <h2>Товар не найден</h2>
-                <p>Извините, запрашиваемый товар не существует или был удален.</p>
-                <a href="index.html">Вернуться в каталог</a>
+                <div class="error-message-text">
+                    <h2>Товар не найден</h2>
+                    <p>Извините, запрашиваемый товар не существует или был удален.</p>
+                    <a href="search.html">Вернуться в каталог</a>
+                </div>
             </div>
         `;
     }

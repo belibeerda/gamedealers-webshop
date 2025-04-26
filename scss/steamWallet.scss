@@ -40,6 +40,7 @@
         &-input {
             display: grid;
             grid-template-columns: 20% 80%;
+            align-items: center;
 
             @media (max-width: 570px) {
                 grid-template-columns: 30% 70%;
@@ -98,6 +99,64 @@
         font-size: 21px;
     }
 
+}
+
+/* Стили для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    &-content {
+        background-color: var(--light-grey);
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 500px;
+        position: relative;
+
+        h2, p {
+            color: black;
+        }
+
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        li, p {
+            font-weight: 500;
+        }
+        
+    }
+
+    &-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+}
+
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 60px;
+    // font-weight: bold;
+    cursor: pointer;
+    color: black;
+
+    &:hover {
+        color: #000;
+    }
 }
 
 @media (max-width: 340px) {

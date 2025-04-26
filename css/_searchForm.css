@@ -1,0 +1,44 @@
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+  gap: 15px;
+  align-items: center;
+  max-width: 100%;
+}
+@media (max-width: 750px) {
+  .search-form {
+    flex-direction: column;
+  }
+}
+.search-form-input {
+  font-family: "Montserrat";
+  padding: 8px;
+  width: 500px;
+  max-width: 90%;
+  height: 42px;
+}
+@media (max-width: 300px) {
+  .search-form-input {
+    width: 200px;
+  }
+}
+.search-form button {
+  padding: 8px 15px;
+  border: 1px solid var(--yellow);
+  background-color: transparent;
+  color: var(--yellow);
+  width: 190px;
+  height: 42px;
+  cursor: pointer;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 169%;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=_searchForm.css.map */

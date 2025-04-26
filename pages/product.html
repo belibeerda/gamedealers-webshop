@@ -61,25 +61,40 @@
             <main class="main">
                 <main class="product">
                     <div class="product-gallery">
-                        <img id="product-gallery-image" src="" alt="Изображение товара">
+                        <div class="product-gallery-main">
+                            <img id="main-screenshot" src="../images/No-img.png" alt="Скриншот игры">
+                        </div>
+                        <div class="product-gallery-thumbnails" id="screenshots-thumbnails"></div>
+                        <div class="product-gallery-controls">
+                            <button class="gallery-prev">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" fill="white"/>
+                                </svg>
+                            </button>
+                            <button class="gallery-next">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                     
                     <div class="product-info">
-                        <h1 id="product-title">Тестовая игра</h1>
-                        <p id="product-description" class="description"></p>
-                        <div id="product-tags" class="tags-container">
-                            <p></p>
+                        <h1 id="product-title"></h1>
+                        <p id="product-description" class="product-description"></p>
+                        <span class="genresTitle"></span>
+                        <div id="product-genres" class="product-genres"></div>
+                        
+                        <div class="price-container">
+                            <div class="old-price-container">
+                                <span class="old-price"></span>
+                                <span class="discount"></span>
+                            </div>
+                            <span class="new-price"></span>
+                            
+                            <button class="buy-button">Купить</button>
                         </div>
                         
-                        <div class="old-price-container">
-                            <span class="old-price"></span>
-                            <span class="discount"></span>
-                        </div>
-                        <div class="new-price">
-                            <span class="price"></span>
-                        </div>
-                        
-                        <button class="buy-button">Купить</button>
                     </div>
             </main>
         </div>
