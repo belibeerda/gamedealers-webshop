@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Получаем ID товара из URL (например: product.html?id=5)
+    // Скрываем скелетон после загрузки
+    const preloader = document.getElementById('preloader');
+
+    // Получаем ID товара из URL
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
 
@@ -40,10 +43,16 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Заполняем данные на странице
             populateProductData(product);
+
+            // Скрываем скелетон после успешной загрузки
+            preloader.style.display = 'none';
             
         } catch (error) {
             console.error('Ошибка загрузки товара:', error);
             showErrorMessage();
+
+            // Скрываем скелетон при ошибке
+            preloader.style.display = 'none';
         }
     }
 
@@ -51,8 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function populateProductData(product) {
         // Основная информация
         document.getElementById('product-title').textContent = product.name;
-        //document.getElementById('product-gallery-image').src = "../images/" + product.image;
-        //document.getElementById('product-gallery-image').alt = product.name;
         document.getElementById('product-description').textContent = product.description;
         
         // Цена и скидка
@@ -75,15 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Жанры
-        // В функции populateProductData замените блок обработки тегов на:
         if (product.genres && product.genres.trim() !== '') {
             const genresContainer = document.getElementById('product-genres');
-            //genresContainer.innerHTML = ''; // Очищаем контейнер
             const genresTitle = document.getElementsByClassName('genresTitle')[0];
             genresTitle.textContent = "Жанры:";
-            // genresTitle.className = 'genresTitle';
-            // genresTitle.textContent = "Жанры:";
-            // genresContainer.appendChild(genresTitle);
             
             // Разделяем теги по запятой и убираем лишние пробелы
             const genres = product.genres.split(',')
@@ -92,11 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Создаем элементы для каждого тега
             genres.forEach(genre => {
-                // const genreElement = document.createElement('a');
-                // genreElement.className = 'genre';
-                // genreElement.textContent = genre;
-                // genreElement.href = "#";
-                // genresContainer.appendChild(genreElement);
 
                 const genreWrapper = document.createElement('div');
                 genreWrapper.className = 'genre'; // Добавляем класс для стилизации
@@ -112,6 +109,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Добавляем div-обертку в контейнер жанров
                 genresContainer.appendChild(genreWrapper);
+            });
+        }
+
+        //Платформы
+        if (product.platforms && product.platforms.trim() !== '') {
+            const platformsContainer = document.getElementById('product-platforms');
+            const platformsTitle = document.getElementsByClassName('platformsTitle')[0];
+            platformsTitle.textContent = "Платформы:";
+            
+            // Разделяем теги по запятой и убираем лишние пробелы
+            const platforms = product.platforms.split(',')
+                            .map(platform => platform.trim())
+                            .filter(platform => platform.length > 0);
+            
+            // Создаем элементы для каждого тега
+            platforms.forEach(platform => {
+
+                const platformWrapper = document.createElement('div');
+                platformWrapper.className = 'platform'; // Добавляем класс для стилизации
+
+                // Создаем ссылку
+                const platformElement = document.createElement('a');
+                platformElement.className = 'platform-link';
+                platformElement.textContent = platform;
+                platformElement.href = "#"; // Устанавливаем href
+
+                // Добавляем ссылку внутрь div-обертки
+                platformWrapper.appendChild(platformElement);
+
+                // Добавляем div-обертку в контейнер жанров
+                platformsContainer.appendChild(platformWrapper);
             });
         }
 

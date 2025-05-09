@@ -30,6 +30,7 @@
   --dark-blue: #09234E;
   --link-blue: #0074D9;
   --light-grey: #9EA2AA;
+  --color-plug: #2a2a2a;
 }
 
 * {
@@ -338,6 +339,7 @@ header .logo.black img {
   font-size: 23px;
 }
 .price-cart .card-button {
+  position: relative;
   background-color: var(--yellow);
   background-image: url("../images/icons/black-cart.svg");
   background-repeat: no-repeat;
@@ -347,6 +349,9 @@ header .logo.black img {
   border-radius: 5px;
   box-shadow: 0 10px 31px var(--card-shadow);
   cursor: pointer;
+}
+.price-cart .card-button:hover {
+  background-color: var(--dark-yellow);
 }
 
 .old-price-container {

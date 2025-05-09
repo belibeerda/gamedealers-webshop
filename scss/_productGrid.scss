@@ -11,6 +11,7 @@
     }
 
     .card-button {
+        position: relative;
         background-color: var(--yellow);
         background-image: url("../images/icons/black-cart.svg");
         background-repeat: no-repeat;
@@ -20,6 +21,10 @@
         border-radius: 5px;
         box-shadow: 0 10px 31px var(--card-shadow);
         cursor: pointer;
+
+        &:hover {
+            background-color: var(--dark-yellow);
+        }
     }
 }
 

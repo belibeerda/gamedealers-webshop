@@ -38,6 +38,7 @@
     --dark-blue: #09234E;
     --link-blue: #0074D9;
     --light-grey: #9EA2AA;
+    --color-plug: #2a2a2a;
 }
 
 * {
@@ -56,10 +57,12 @@ body, html {
 
 body {
     font-family: "Montserrat", Arial;
-    background-color: rgb(10, 16, 22);
-    background-image: var(--background-color);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: {
+        color: rgb(10, 16, 22);
+        image:  var(--background-color);
+        repeat: no-repeat;
+        attachment: fixed;
+    }
     scroll-behavior: smooth;
 
     &.lock {

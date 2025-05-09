@@ -80,6 +80,12 @@
     max-height: 680px;
     margin-left: auto;
 
+    &-link::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+    }
+
     &-offer {
         position: absolute;
         background-image: url("../images/Red-background.png");
@@ -195,6 +201,8 @@
     }
     
     &-grid-container {
+        position: relative;
+
         display: flex;
         gap: 60px;
         margin-left: 5%;
@@ -214,7 +222,7 @@
             border: 2px solid white;
             font-size: 20px;
             font-weight: 500;
-            padding-inline: 15px;
+            // padding-inline: 15px;
             transition: transform 0.5s ease;
         }
     }
@@ -243,32 +251,20 @@
     }
 }
 
-.steam {
-    @include Repeat-background("../images/steam-logo.png");
-}
+.repeat-back {
+    position: relative;
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 0.2;
+    }
 
-.keys {
-    @include Repeat-background("../images/icons/key-svgrepo-com.svg");
-}
-
-.game-consoles {
-    @include Repeat-background("../images/icons/gamepad-controller-svgrepo-com.svg");
-}
-
-.gift-cards {
-    @include Repeat-background("../images/icons/gift-card.svg");
-}
-
-.software {
-    @include Repeat-background("../images/icons/monitor.svg");
-}
-
-.vr {
-    @include Repeat-background("../images/icons/vr.svg");
-}
-
-.game-items {
-    @include Repeat-background("../images/icons/Gem-2-Streamline-Cyber.svg");
+    span {
+        position: absolute;
+        margin-inline: 15px;
+    }
 }
 
 @media (max-width: 900px) {

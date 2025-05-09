@@ -30,6 +30,7 @@
   --dark-blue: #09234E;
   --link-blue: #0074D9;
   --light-grey: #9EA2AA;
+  --color-plug: #2a2a2a;
 }
 
 * {
@@ -338,6 +339,7 @@ header .logo.black img {
   font-size: 23px;
 }
 .price-cart .card-button {
+  position: relative;
   background-color: var(--yellow);
   background-image: url("../images/icons/black-cart.svg");
   background-repeat: no-repeat;
@@ -347,6 +349,9 @@ header .logo.black img {
   border-radius: 5px;
   box-shadow: 0 10px 31px var(--card-shadow);
   cursor: pointer;
+}
+.price-cart .card-button:hover {
+  background-color: var(--dark-yellow);
 }
 
 .old-price-container {
@@ -528,6 +533,11 @@ header .logo.black img {
   max-height: 680px;
   margin-left: auto;
 }
+.main-banner-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
 .main-banner-offer {
   position: absolute;
   background-image: url("../images/Red-background.png");
@@ -633,6 +643,7 @@ header .logo.black img {
   opacity: 0.5;
 }
 .categories-grid-container {
+  position: relative;
   display: flex;
   gap: 60px;
   margin-left: 5%;
@@ -652,7 +663,6 @@ header .logo.black img {
   border: 2px solid white;
   font-size: 20px;
   font-weight: 500;
-  padding-inline: 15px;
   transition: transform 0.5s ease;
 }
 
@@ -660,112 +670,19 @@ header .logo.black img {
   background-color: var(--red);
 }
 
-.steam {
+.repeat-back {
   position: relative;
-  overflow: hidden;
 }
-.steam::before {
-  content: "";
-  position: absolute;
-  top: -10;
-  left: -10;
-  width: 200%;
-  height: 200%;
-  background-image: url("../images/steam-logo.png");
-  background-size: 60px;
-  transform: rotate(15deg);
-  z-index: -1;
+.repeat-back img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
   opacity: 0.2;
 }
-
-.keys {
-  position: relative;
-  overflow: hidden;
-}
-.keys::before {
-  content: "";
+.repeat-back span {
   position: absolute;
-  top: -10;
-  left: -10;
-  width: 200%;
-  height: 200%;
-  background-image: url("../images/icons/key-svgrepo-com.svg");
-  background-size: 60px;
-  transform: rotate(15deg);
-  z-index: -1;
-  opacity: 0.2;
-}
-
-.game-consoles {
-  position: relative;
-  overflow: hidden;
-}
-.game-consoles::before {
-  content: "";
-  position: absolute;
-  top: -10;
-  left: -10;
-  width: 200%;
-  height: 200%;
-  background-image: url("../images/icons/gamepad-controller-svgrepo-com.svg");
-  background-size: 60px;
-  transform: rotate(15deg);
-  z-index: -1;
-  opacity: 0.2;
-}
-
-.gift-cards {
-  position: relative;
-  overflow: hidden;
-}
-.gift-cards::before {
-  content: "";
-  position: absolute;
-  top: -10;
-  left: -10;
-  width: 200%;
-  height: 200%;
-  background-image: url("../images/icons/gift-card.svg");
-  background-size: 60px;
-  transform: rotate(15deg);
-  z-index: -1;
-  opacity: 0.2;
-}
-
-.software {
-  position: relative;
-  overflow: hidden;
-}
-.software::before {
-  content: "";
-  position: absolute;
-  top: -10;
-  left: -10;
-  width: 200%;
-  height: 200%;
-  background-image: url("../images/icons/monitor.svg");
-  background-size: 60px;
-  transform: rotate(15deg);
-  z-index: -1;
-  opacity: 0.2;
-}
-
-.vr {
-  position: relative;
-  overflow: hidden;
-}
-.vr::before {
-  content: "";
-  position: absolute;
-  top: -10;
-  left: -10;
-  width: 200%;
-  height: 200%;
-  background-image: url("../images/icons/vr.svg");
-  background-size: 60px;
-  transform: rotate(15deg);
-  z-index: -1;
-  opacity: 0.2;
+  margin-inline: 15px;
 }
 
 .game-items {

@@ -47,7 +47,7 @@
                             <path d="M12.9738 24V18.2553C12.9738 15.182 10.5242 12.7234 7.53024 12.7234C4.50605 12.7234 2.08669 15.2128 2.08669 18.2553V24H0V18.2553C0 14.0449 3.35685 10.6336 7.5 10.6336C11.6431 10.6336 15 14.0449 15 18.2553V24H12.9738Z"/>
                         </svg>                            
                     </a>
-                    <a href="#" title="Корзина">
+                    <a href="cart.html" title="Корзина">
                         <svg width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.44457 25L1.6327 13.8197H0V7.50297H6.22844L9.2822 0L11.0358 0.682088L8.2542 7.53262H18.6853L15.9339 0.682088L17.6876 0L20.7413 7.50297H26.9698V13.8197H25.3371L22.5252 25H4.44457ZM21.0739 23.1613L23.4323 13.8493H3.56775L5.92609 23.1613H21.0739ZM25.0952 11.981V9.40095H1.90482V11.981H25.0952Z"/>
                             <path d="M14.4523 15.3914H12.5475V22.064H14.4523V15.3914Z"/>
@@ -57,46 +57,82 @@
                     </a>
                 </div>
             </header>
-            
-            <main class="main">
-                <main class="product">
-                    <div class="product-gallery">
-                        <div class="product-gallery-main">
-                            <img id="main-screenshot" src="../images/No-img.png" alt="Скриншот игры">
-                        </div>
-                        <div class="product-gallery-thumbnails" id="screenshots-thumbnails"></div>
-                        <div class="product-gallery-controls">
-                            <button class="gallery-prev">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" fill="white"/>
-                                </svg>
-                            </button>
-                            <button class="gallery-next">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="white"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="product-info">
-                        <h1 id="product-title"></h1>
-                        <p id="product-description" class="product-description"></p>
-                        <span class="genresTitle"></span>
-                        <div id="product-genres" class="product-genres"></div>
-                        
-                        <div class="price-container">
-                            <div class="old-price-container">
-                                <span class="old-price"></span>
-                                <span class="discount"></span>
+
+            <div class="preload-container">
+
+                <div id="preloader" class="skeleton-loader">
+                    <div class="skeleton">
+                        <!-- Скелетон галереи -->
+                        <div class="skeleton-gallery">
+                            <div class="skeleton-gallery-main"></div>
+                            <div class="skeleton-gallery-thumbnails">
+                                <div></div>
+                                <div></div>
+                                <div></div>
                             </div>
-                            <span class="new-price"></span>
-                            
-                            <button class="buy-button">Купить</button>
+                        </div>
+                
+                        <!-- Скелетон информации о товаре -->
+                        <div class="skeleton-info">
+                            <div class="skeleton-title"></div>
+                            <div class="skeleton-text"></div>
+                            <div class="skeleton-text"></div>
+                            <div class="skeleton-genres">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="skeleton-price">
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <main class="product">
+                    <!-- <main class="product"> -->
+                        <div class="product-gallery">
+                            <div class="product-gallery-main">
+                                <img id="main-screenshot" src="../images/No-img.png" alt="Скриншот игры">
+                            </div>
+                            <div class="product-gallery-thumbnails" id="screenshots-thumbnails"></div>
+                            <div class="product-gallery-controls">
+                                <button class="gallery-prev">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" fill="white"/>
+                                    </svg>
+                                </button>
+                                <button class="gallery-next">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="white"/>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                         
-                    </div>
-            </main>
+                        <div class="product-info">
+                            <h1 id="product-title"></h1>
+                            <p id="product-description" class="product-description"></p>
+                            <span class="platformsTitle"></span>
+                            <div id="product-platforms" class="product-genres"></div>
+                            <span class="genresTitle"></span>
+                            <div id="product-genres" class="product-genres"></div>
+                            
+                            <div class="price-container">
+                                <div class="old-price-container">
+                                    <span class="old-price"></span>
+                                    <span class="discount"></span>
+                                </div>
+                                <span class="new-price"></span>
+                                
+                                <button class="buy-button">Купить</button>
+                            </div>
+                            
+                        </div>
+                </main>
+            </div>
+            
         </div>
         <footer class="footer">
             <div class="footer-inner">
