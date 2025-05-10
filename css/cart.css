@@ -335,6 +335,28 @@ header .logo.black img {
   max-width: 1700px;
 }
 
+#empty-cart-message {
+  display: none;
+  text-align: center;
+  padding: 40px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+#empty-cart-message p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.continue-shopping {
+  color: #0066cc;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+}
+
 .cart {
   margin-inline: 50px;
 }

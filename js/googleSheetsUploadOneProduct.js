@@ -204,10 +204,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Кнопка "Купить" (можно добавить ссылку)
+        // Кнопка "Купить"
+        const priceContainer = document.querySelector('.price-container');
+
+        // Создаем кнопку
+        const button = document.createElement('button');
+        button.textContent = 'Купить'; // Текст на кнопке
+        button.className = 'buy-button'; // Добавляем класс
+
+        // Добавляем атрибут data-product-id
+        button.setAttribute('data-product-id', `${product.id}`);
+
+        priceContainer.appendChild(button);
+
         document.querySelector('.buy-button').addEventListener('click', function() {
-            // Здесь можно добавить логику покупки
-            console.log('Покупка товара:', product.name);
+            addToCart(productId, product);
         });
     }
 
@@ -227,3 +238,37 @@ document.addEventListener('DOMContentLoaded', function() {
     // Запускаем загрузку данных
     loadProductData();
 });
+
+// Функция добавления в корзину
+function addToCart(productId, product) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    const existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: productId,
+            name: product.name,
+            price: parseFloat(product.price),
+            image: `../images/${product.image}`,
+            quantity: 1
+        });
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    showCartNotification();
+}
+
+// Показ уведомления
+function showCartNotification() {
+    const notification = document.createElement('div');
+    notification.className = 'cart-notification';
+    notification.textContent = 'Товар добавлен в корзину!';
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 2000);
+}

@@ -6,8 +6,7 @@
     display: flex;
     height: 50vh;
     align-items: center;
-    justify-content: center;
-    margin-inline: 50px;
+    margin-inline: auto;
 
     a {
         color: var(--bright-red);
@@ -71,9 +70,15 @@
     }
 }
 
+.preload-container, .product {
+    max-width: 1900px;
+    margin-inline: auto;
+}
+
 .product {
     display: flex;
     gap: 50px;
+
 
     &-description {
         font-size: 18px;
@@ -296,6 +301,25 @@
     50% {
         opacity: 0.5;
     }
+}
+
+.cart-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-50%) translateY(100%); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
 }
 
 @media (max-width: 1400px) {

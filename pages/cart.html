@@ -62,9 +62,16 @@
                 <div class="cart">
                     <div class="cart-title-container">
                         <h1>Корзина</h1>
-                        <span class="number-products">2 шт</span>
+                        <span class="number-products">0 шт</span>
                     </div>
-                    <table class="cart-table">
+
+                    <div id="empty-cart-message">
+                        <p>Ваша корзина пуста</p>
+                        <a href="../index.html" class="continue-shopping">Продолжить покупки</a>
+                    </div>
+
+                    <div class="cart-content">
+                        <table class="cart-table">
                         <thead>
                             <tr>
                                 <th></th>
@@ -76,7 +83,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <!-- <tr>
                                 <td class="image">
                                     <div class="image-box">
                                         <img src="../images/kingdom-come-deliverance-2-11f6u.png" alt="">
@@ -103,7 +110,7 @@
                                 <td>
                                     <button class="delete-btn"></button>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                     <div class="checkout-box">
@@ -114,9 +121,10 @@
                         </div>
                         <div class="total">
                           <span>ИТОГО К ОПЛАТЕ:</span>
-                          <strong>2 580 ₽</strong>
+                          <strong class="cart-total">2 580 ₽</strong>
                         </div>
                         <button class="order-btn">ОФОРМИТЬ ЗАКАЗ</button>
+                    </div>
                     </div>
                 </div>
             </main>
@@ -158,6 +166,7 @@
     </div>
 
     <script src="../js/burgerMenu.js"></script>
-    <script src="../js/cart-logic.js"></script>
+    <script src="../js/cartTotalAmout.js"></script>
+    <script src="../js/cartLogic.js"></script>
 </body>
 </html>
