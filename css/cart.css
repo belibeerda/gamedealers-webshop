@@ -278,6 +278,28 @@ header .logo.black img {
   fill: black;
 }
 
+.cart-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-count {
+  position: absolute;
+  top: -3px;
+  left: -5px;
+  background: var(--yellow);
+  color: black;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 1px 6px;
+  line-height: 1;
+  display: none;
+  line-height: 15px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
 @media (max-width: 1180px) {
   .header-menu-icon {
     display: block;
@@ -420,6 +442,11 @@ header .logo.black img {
   font-size: 20px;
   padding-right: 35px;
 }
+.cart-table .title p {
+  margin: 0;
+  margin-top: 5px;
+  font-size: 18px;
+}
 .cart-table .price, .cart-table .sum {
   width: 16%;
   font-weight: 800;
@@ -554,8 +581,11 @@ header .logo.black img {
     width: 140px;
     height: 140px;
   }
-  .cart-table .title {
+  .cart-table .title .name {
     font-size: 16px;
+  }
+  .cart-table .title .platform {
+    font-size: 14px;
   }
   .cart-table .price, .cart-table .sum {
     font-size: 19px;

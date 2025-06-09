@@ -18,13 +18,9 @@ GameDealers - это веб-приложение для продажи цифр�
 
 - JavaScript (ES6+)
 
-- Google Sheets API - как временная БД
-
 ### Backend (планируется)
 
-- Node.js + Express
-
-- MongoDB
+- PostgreSQL
 
 ## Установка и запуск (для разработки)
 
@@ -50,19 +46,22 @@ npm run start
 ```
 gamedealers/
 ├── index.html          # Главная страница
-├── product.html        # Страница товара (шаблон)
-├── search.html         # Страница поиска
-├── css/
-│   ├── main.scss       # Основные стили
-│   ├── product.scss    # Стили страницы товара
-│   └── search.scss     # Стили поиска
+├pages/
+│   ├── product.html    # Страница товара (шаблон)
+│   └── search.html     # Страница поиска
+├css/
+│   ├── main.css       # Основные стили
+│   ├── product.css    # Стили страницы товара
+│   └── search.css     # Стили поиска
+├scss/
+│   ├── main.scss       
+│   ├── product.scss    
+│   └── search.scss
 ├── js/
 │   ├── main.js         # Главный скрипт
 │   ├── product.js      # Логика страницы товара
 │   └── search.js       # Поиск и фильтрация
 ├── images/             # Локальные изображения
-└── api/                # Скрипты для работы с API
-    └── sheets.js       # Google Sheets API
 ```
 
 ## Настройка Google Sheets API

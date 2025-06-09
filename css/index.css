@@ -277,6 +277,28 @@ header .logo.black img {
   fill: black;
 }
 
+.cart-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-count {
+  position: absolute;
+  top: -3px;
+  left: -5px;
+  background: var(--yellow);
+  color: black;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 1px 6px;
+  line-height: 1;
+  display: none;
+  line-height: 15px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
 @media (max-width: 1180px) {
   .header-menu-icon {
     display: block;
@@ -683,24 +705,6 @@ header .logo.black img {
 .repeat-back span {
   position: absolute;
   margin-inline: 15px;
-}
-
-.game-items {
-  position: relative;
-  overflow: hidden;
-}
-.game-items::before {
-  content: "";
-  position: absolute;
-  top: -10;
-  left: -10;
-  width: 200%;
-  height: 200%;
-  background-image: url("../images/icons/Gem-2-Streamline-Cyber.svg");
-  background-size: 60px;
-  transform: rotate(15deg);
-  z-index: -1;
-  opacity: 0.2;
 }
 
 @media (max-width: 900px) {

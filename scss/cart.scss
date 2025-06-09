@@ -114,6 +114,13 @@
         .title {
             font-size: 20px;
             padding-right: 35px;
+
+            p {
+                margin: 0 {
+                    top: 5px;
+                }
+                font-size: 18px;
+            }
         }
 
         .price, .sum {
@@ -276,8 +283,14 @@
             }
 
             .title {
-                font-size: 16px;
+                .name {
+                    font-size: 16px;
+                }
+                .platform {
+                    font-size: 14px;
+                }
             }
+            
 
             .price, .sum {
                 font-size: 19px;

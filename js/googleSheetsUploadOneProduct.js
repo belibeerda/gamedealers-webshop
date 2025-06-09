@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Скрываем скелетон после загрузки
     const preloader = document.getElementById('preloader');
+    updateCartCount();
 
     // Получаем ID товара из URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -116,30 +117,28 @@ document.addEventListener('DOMContentLoaded', function() {
         if (product.platforms && product.platforms.trim() !== '') {
             const platformsContainer = document.getElementById('product-platforms');
             const platformsTitle = document.getElementsByClassName('platformsTitle')[0];
-            platformsTitle.textContent = "Платформы:";
-            
-            // Разделяем теги по запятой и убираем лишние пробелы
+            platformsTitle.textContent = "Выберите платформу:";
+
             const platforms = product.platforms.split(',')
-                            .map(platform => platform.trim())
-                            .filter(platform => platform.length > 0);
-            
-            // Создаем элементы для каждого тега
-            platforms.forEach(platform => {
+                .map(platform => platform.trim())
+                .filter(platform => platform.length > 0);
 
-                const platformWrapper = document.createElement('div');
-                platformWrapper.className = 'platform'; // Добавляем класс для стилизации
+            platforms.forEach((platform, index) => {
+                const label = document.createElement('label');
+                label.className = 'product-platforms-radio';
 
-                // Создаем ссылку
-                const platformElement = document.createElement('a');
-                platformElement.className = 'platform-link';
-                platformElement.textContent = platform;
-                platformElement.href = "#"; // Устанавливаем href
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'platform';
+                radio.value = platform;
+                if (index === 0) radio.checked = true;
 
-                // Добавляем ссылку внутрь div-обертки
-                platformWrapper.appendChild(platformElement);
+                const span = document.createElement('span');
+                span.textContent = platform;
 
-                // Добавляем div-обертку в контейнер жанров
-                platformsContainer.appendChild(platformWrapper);
+                label.appendChild(radio);
+                label.appendChild(span);
+                platformsContainer.appendChild(label);
             });
         }
 
@@ -241,24 +240,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Функция добавления в корзину
 function addToCart(productId, product) {
+    // let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // const existingItem = cart.find(item => item.id === productId);
+    
+    // if (existingItem) {
+    //     existingItem.quantity += 1;
+    // } else {
+    //     cart.push({
+    //         id: productId,
+    //         name: product.name,
+    //         price: Math.round(parseFloat(product.price) * (1 - product.action / 100)),
+    //         image: `../images/${product.image}`,
+    //         quantity: 1
+    //     });
+    // }
+    
+    // localStorage.setItem('cart', JSON.stringify(cart));
+    // showCartNotification();
+    // updateCartCount();
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    const existingItem = cart.find(item => item.id === productId);
-    
+
+    const selectedPlatformInput = document.querySelector('input[name="platform"]:checked');
+    const selectedPlatform = selectedPlatformInput ? selectedPlatformInput.value : 'Без платформы';
+
+    const discount = parseFloat(product.action) || 0;
+    const basePrice = parseFloat(product.price);
+    const finalPrice = basePrice - (basePrice * discount / 100);
+
+    const existingItem = cart.find(item => item.id === productId && item.platform === selectedPlatform);
+
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
         cart.push({
             id: productId,
             name: product.name,
-            price: parseFloat(product.price),
+            price: finalPrice,
             image: `../images/${product.image}`,
+            platform: selectedPlatform,
             quantity: 1
         });
     }
-    
+
     localStorage.setItem('cart', JSON.stringify(cart));
     showCartNotification();
+    updateCartCount();
 }
 
 // Показ уведомления
@@ -271,4 +298,20 @@ function showCartNotification() {
     setTimeout(() => {
         notification.remove();
     }, 2000);
+}
+
+function updateCartCount () {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartCountElement = document.getElementById('cart-count');
+
+    if (!cartCountElement) return; // Если элемент не найден — выходим
+
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    if (totalItems > 0) {
+        cartCountElement.textContent = totalItems;
+        cartCountElement.style.display = 'inline-block';
+    } else {
+        cartCountElement.style.display = 'none';
+    }
 }

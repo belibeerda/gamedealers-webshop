@@ -167,6 +167,33 @@
         gap: 20px;
     }
 
+    &-platforms {
+        display: flex;
+        gap: 20px;
+
+        &-radio {
+
+            input {
+                display: none;
+
+                &:checked + span {
+                    background-color: var(--yellow);
+                    color: black;
+                }
+            }
+
+            span {
+                padding: 6px 12px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                display: inline-block;
+                font-weight: 500;
+            }
+        }
+    }
+
     &-genres {
         display: flex;
         gap: 10px;

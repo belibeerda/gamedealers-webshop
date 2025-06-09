@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Отображаем корзину
     renderCart(cart);
+    // Обновление количества в шапке
+    updateCartBadge(cart);
     
     // Функция отрисовки корзины
     function renderCart(cartItems) {
@@ -39,10 +41,17 @@ document.addEventListener('DOMContentLoaded', function() {
             row.innerHTML = `
                 <td class="image">
                     <div class="image-box">
-                        <img src="${item.image}" alt="${item.name}">
+                        <a href = "product.html?id=${item.id}">
+                            <img src="${item.image}" alt="${item.name}">
+                        </a>
                     </div>
                 </td>
-                <td class="title">${item.name}</td>
+                <td class="title">
+                    <a href = "product.html?id=${item.id}">
+                        <span class="name">${item.name}</span>
+                        <p class="platform">${item.platform}</p>
+                    </a>
+                </td>
                 <td class="price">${item.price.toFixed(2)}&nbsp;&#8381;</td>
                 <td class="counter">
                     <div class="counter-container">
@@ -112,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart(cart);
+            updateCartBadge(cart);
         }
     }
     
@@ -121,5 +131,18 @@ document.addEventListener('DOMContentLoaded', function() {
         cart = cart.filter(item => item.id !== productId);
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart(cart);
+        updateCartBadge(cart);
     }
+
+    function updateCartBadge(cartItems) {
+        const cartCountElement = document.getElementById('cart-count');
+        const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+        if (totalItems > 0) {
+            cartCountElement.textContent = totalItems;
+            cartCountElement.style.display = 'inline-block';
+        } else {
+            cartCountElement.style.display = 'none';
+    }
+}
 });
