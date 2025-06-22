@@ -1,0 +1,39 @@
+@use 'base';
+@use 'footer';
+@use 'header';
+
+main {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.payment {
+    &-block {
+        margin-bottom: 40px;
+
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--yellow);
+        }
+
+        ul {
+            color: white;
+            list-style: disc inside;
+            margin-bottom: 15px;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--yellow);
+            text-decoration: underline;
+        }
+    }
+}

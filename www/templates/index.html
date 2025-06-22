@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}GameDealers — the best stuff{% endblock %}
+{% block style %}{% static 'css/index.css' %}{% endblock %}
+
+{% block content %}
+<main class="main">
+    <section class="intro-section">
+        <div class="intro-content">
+            <p class="intro-text">
+                Пополнение Steam, подписки, программы и многое другое!
+            </p>
+            <div class="dotted-rectangle"></div>
+            <div class="discord">
+                <p>Загляни в наш дискорд</p>
+                <a class="discord-link" href="#">discord.com/g0med1las</a>
+            </div>
+
+            
+            <div class="main-action">
+                <h2>Акция недели!</h2>
+                <a href="{% url 'product' %}?id=4">
+                    <div class="action-game-image"></div>
+                </a>
+                <a href="{% url 'product' %}?id=4" class="game-name">
+                    <p>Red Dead Redemption 2</p>
+                </a>
+                <div class="old-price-container">
+                    <span class="old-price">5999&nbsp;&#8381;</span>
+                    <span class="discount">-67%</span>
+                </div>
+                <div class="price-cart">
+                    <span class="price">1980&nbsp;&#8381;</span>
+                    <div class="card-button add-to-cart-button" 
+                        data-product-id="4" 
+                        data-product-name="Red Dead Redemption 2" 
+                        data-product-price="1980,00" 
+                        data-product-image="Red_Dead_Redemption_2_coverart.jpg" 
+                        data-product-platforms="1:Steam;7:PlayStation 4;2:PlayStation 5;3:Xbox">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="main-banner">
+            <div class="dotted-rectangle-2"></div>
+            <h2>Новинка!</h2>
+            <div class="main-banner-offer">
+                <div class="main-banner-offer-inner">
+                    <a class="main-banner-link" href="{% url 'product' %}?id=29">
+                        <h3>DELTARUNE</h3>
+                    </a>
+                    <p>Захватывающая JRPG от Тоби Фокса, создателя знаменитой Undertale. 
+                        Погрузитесь в уникальное приключение, полное отличного юмора, 
+                        незабываемых персонажей и сюрреалистического мира</p>
+                    <div class="price-cart">
+                        <span class="price">1099&nbsp;&#8381;</span>
+                        <div class="card-button add-to-cart-button" 
+                            data-product-id="29" data-product-name="DELTARUNE" 
+                            data-product-price="1099,00" 
+                            data-product-image="Deltarune.jpg" 
+                            data-product-platforms="1:Steam">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="catalog">
+        <h1>Популярные преложения</h1>
+        <div class="catalog-grid-container">
+            {% for product in popular_products %}
+            <div class="product-card">
+                <div class="game-image">
+                    <a href="{% url 'product' %}?id={{ product.id }}">
+                        {% if product.image_url %}
+                        <img src="{% static 'images/' %}{{ product.image_url }}" alt="{{ product.name }}">
+                        {% else %}
+                        <div class="no-image">Нет изображения</div>
+                        {% endif %}
+                    </a>    
+                </div>
+                <a href="{% url 'product' %}?id={{ product.id }}">
+                    <p class="game-name">{{ product.name|default:'Без названия' }}</p>
+                </a>
+                {% if product.discount_percent %}
+                <div class="old-price-container">
+                    <span class="old-price">{{ product.old_price|floatformat:2 }}&nbsp;&#8381;</span>
+                    <span class="discount">-{{ product.discount_percent }}%</span>
+                </div>
+                {% endif %}
+                <div class="price-cart">
+                    <span class="price">{{ product.price|floatformat:2 }}&nbsp;&#8381;</span>
+                    <div class="card-button add-to-cart-button" data-product-id="{{ product.id }}"
+                        data-product-name="{{ product.name }}" data-product-price="{{ product.price|floatformat:2 }}"
+                        data-product-image="{{ product.image_url|default:'No-img.png' }}"
+                        data-product-platforms="{% for pp in product.productplatforms_set.all %}{{ pp.platform.platform_id }}:{{ pp.platform.platform_name }}{% if not forloop.last %};{% endif %}{% endfor %}">
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>Нет популярных предложений.</p>
+            {% endfor %}
+
+            <div class="product-card">
+                <div class="game-image">
+                    <a href="{% url 'steamWallet' %}">
+                        <img src="{% static 'images/steam.jpg' %}" alt="Steam Wallet">
+                    </a>
+                </div>
+                <a href="{% url 'steamWallet' %}">
+                    <p class="game-name">Steam Wallet</p>
+                </a>
+                <div class="price-cart">
+                    <span class="price">От&nbsp;100&nbsp;&#8381;</span>
+                    <a href="{% url 'steamWallet' %}">
+                        <div class="card-button"></div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <a href="{% url 'search' %}">
+            <div class="all-products-link">
+                <span>Ко всем товарам</span>
+            </div>
+        </a>
+    </section>
+
+    <section class="categories">
+        <div class="categories-head">
+            <h1>Категории</h1>
+            <div class="slider-buttons">
+                <button class="slider-button prev" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" fill="white" />
+                    </svg>
+                </button>
+                <button class="slider-button next" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="white" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="categories-grid-container">
+            <a href="{% url 'discounts' %}">
+                <div class="categories-grid-container-item red-background">
+                    <div class="discount-label">
+                        <img src="{% static 'images/icons/thirty.svg' %}" class="number">
+                        <img src="{% static 'images/icons/percent.svg' %}" class="percent">
+                    </div>
+                    <span>Акции&nbsp;🔥</span>
+                    <div class="discount-label">
+                        <img src="{% static 'images/icons/twenty.svg' %}" class="number">
+                        <img src="{% static 'images/icons/percent.svg' %}" class="percent">
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'steamWallet' %}">
+                <div class="categories-grid-container-item repeat-back">
+                    <span>Пополнение Steam</span>
+                    <img src="{% static 'images/steam-back.png' %}">
+                </div>
+            </a>
+            <a href="#">
+                <div class="categories-grid-container-item repeat-back">
+                    <span>Игровые ключи и активации</span>
+                    <img src="{% static 'images/keys-back.png' %}">
+                </div>
+            </a>
+            <a href="#">
+                <div class="categories-grid-container-item repeat-back">
+                    <span>Игры для консолей</span>
+                    <img src="{% static 'images/Console-back.png' %}">
+                </div>
+            </a>
+            <a href="#">
+                <div class="categories-grid-container-item repeat-back">
+                    <span>Подарочные карты</span>
+                    <img src="{% static 'images/gift-back.png' %}">
+                </div>
+            </a>
+            <a href="#">
+                <div class="categories-grid-container-item repeat-back">
+                    <span>Программное обеспечение</span>
+                    <img src="{% static 'images/software-back.png' %}">
+                </div>
+            </a>
+            <a href="#">
+                <div class="categories-grid-container-item repeat-back">
+                    <span>Виртуальная реальность (VR)</span>
+                    <img src="{% static 'images/vr-back.png' %}">
+                </div>
+            </a>
+            <a href="#">
+                <div class="categories-grid-container-item repeat-back repeat-back">
+                    <span>Игровые предметы и внутриигровая валюта</span>
+                    <img src="{% static 'images/game-items.png' %}">
+                </div>
+            </a>
+            <a href="#">
+                <div class="categories-grid-container-item repeat-back">
+                    <span>Подписки на сервисы</span>
+                    <img src="{% static 'images/subscriptions-services.png' %}">
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="categories-grid-container-item repeat-back">
+                    <span>Облачные игры</span>
+                    <img src="{% static 'images/cloud-games.png' %}">
+                </div>
+            </a>
+
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block modals %}
+<div id="quickAddToCartModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-product-image">
+            <img id="modalProductImage" src="" alt="Product Image">
+        </div>
+        <div class="info-container">
+            <h2 id="modalProductName"></h2>
+            <p class="modal-product-price">Цена: <strong><span id="modalProductPrice"></span>&nbsp;₽</strong></p>
+            <div class="modal-platforms-container">
+                <p>Выберите платформу:</p>
+                <div id="modal-platforms" class="modal-platforms"></div>
+            </div>
+            <button id="modalAddToCartButton" class="buy-button">Добавить в корзину</button>
+        </div>
+        <span class="close-button">&times;</span>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/categoriesScroller.js' %}"></script>
+<script src="{% static 'js/cartCounter.js' %}"></script>
+<script src="{% static 'js/quickAddToCart.js' %}"></script>
+{% endblock %}

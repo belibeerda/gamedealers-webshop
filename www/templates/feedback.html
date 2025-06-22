@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}GameDealers — Обратная связь{% endblock %}
+{% block style %}{% static 'css/feedback.css' %}{% endblock %}
+
+{% block content %}
+<main class="main">
+    <div class="feedback-container">
+        <h1>Обратная связь</h1>
+        <nav class="breadcrumbs">
+            <ol>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><span>Обратная связь</span></li>
+            </ol>
+        </nav>
+        <form class="feedback-container-form">
+            <label for="feedback-text">Ваш вопрос, отзыв или пожелание:</label>
+            <textarea id="feedback-text" name="feedback-text"></textarea>
+            <label for="email">email для получения ответа</label>
+            <input id="email" name="user-email" type="email">
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+    <div class="dotted-rectangle-container">
+        <div class="dotted-rectangle-1"></div>
+        <div class="dotted-rectangle-2"></div>
+    </div>
+</main>
+{% endblock %}
+{% block modals %}
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+        <div class="modal-content">
+            <h2>Спасибо за обратную связь!</h2>
+            <p>Ваше сообщение успешно отправлено. Мы ответим вам на указанный email в ближайшее время.</p>
+            <button id="modal-ok-button" class="modal-button">OK</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/feedbackModal.js' %}"></script>
+<script src="{% static 'js/cartCounter.js' %}"></script>
+{% endblock %}

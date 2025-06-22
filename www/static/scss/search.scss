@@ -1,0 +1,46 @@
+@use 'base';
+@use 'footer';
+@use 'header';
+@use 'productGrid';
+@use 'searchForm';
+@use 'quickAddToCartModal';
+
+.search-head {
+  max-width: 1800px;
+  margin-inline: auto;
+  margin-bottom: 40px;
+
+  h1 {
+    font-size: 60px;
+    margin-bottom: 0  ;
+
+    @media (max-width: 400px) {
+      font-size: 30px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
+}
+
+.search-form {
+
+  flex-direction: column;
+
+  &-select {
+    font-family: 'Montserrat';
+    padding: 8px;
+    width: 200px;
+
+    max-width: 90%;
+    height: 42px;
+  }
+}
+
+.select-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}

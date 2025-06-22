@@ -1,0 +1,33 @@
+@use 'base';
+@use 'footer';
+@use 'header';
+
+h1 {
+    text-align: center;
+    word-break: break-word;
+
+    @media (max-width: 500px) {
+        font-size: 24px;
+    }
+}
+
+pre {
+    font-size: 18px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: {
+        inline: 25%;
+        top: 35px;
+        bottom: 70px;
+    }
+
+    @media (max-width: 1000px) {
+        margin-inline: 10%;
+    }
+}
+
+.breadcrumbs {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}

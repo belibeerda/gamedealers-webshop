@@ -1,0 +1,88 @@
+@use 'base';
+@use 'footer';
+@use 'header';
+
+.order-page {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    // font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    // background-color: #0f1521;
+}
+
+.page-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.order-section h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="email"],
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.delivery-options,
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.delivery-option,
+.payment-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #1b2231;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.delivery-option input,
+.payment-option input {
+    margin-top: 6px;
+}
+
+.delivery-option:hover,
+.payment-option:hover {
+    border-color: #ffc400;
+}
+
+.submit-button {
+    background-color: #ffc400;
+    color: #000;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #e6ac00;
+}

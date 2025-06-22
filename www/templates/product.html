@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ product.name }}{% endblock %}
+{% block style %}{% static 'css/product.css' %}{% endblock %}
+
+{% block content %}
+<div class="preload-container">
+    <div id="preloader" class="skeleton-loader">
+        <div class="skeleton">
+            <div class="skeleton-gallery">
+                <div class="skeleton-gallery-main"></div>
+                <div class="skeleton-gallery-thumbnails">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+            <div class="skeleton-info">
+                <div class="skeleton-title"></div>
+                <div class="skeleton-text"></div>
+                <div class="skeleton-text"></div>
+                <div class="skeleton-genres">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="skeleton-price">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="product">
+        <div class="product-gallery">
+            <div class="product-gallery-main">
+                <img id="main-screenshot"
+                    src="{% if screenshots %}{% static 'images/screenshots/' %}{{ screenshots.0 }}{% else %}{% static 'images/No-img.png' %}{% endif %}"
+                    alt="Скриншот игры" />
+            </div>
+
+            <div class="product-gallery-thumbnails" id="screenshots-thumbnails">
+                {% for img in screenshots %}
+                <img src="{% static 'images/screenshots/' %}{{ img }}" alt="Скриншот {{ forloop.counter }}"
+                    class="thumbnail" onclick="setMainScreenshot(this)">
+                {% endfor %}
+            </div>
+
+            <div class="product-gallery-controls">
+                <button class="gallery-prev" onclick="prevScreenshot()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" fill="white" />
+                    </svg>
+                </button>
+                <button class="gallery-next" onclick="nextScreenshot()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="white" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1 id="product-title">{{ product.name }}</h1>
+            <nav class="breadcrumbs">
+                <ol>
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li><a href="{% url 'search' %}">Все товары</a></li>
+                    <li><span>{{ product.name }}</span></li> {# Убедитесь, что переменная `product` доступна #}
+                </ol>
+            </nav>
+
+            <p id="product-description" class="product-description">
+                {{ product.description|default:"Описание отсутствует." }}
+            </p>
+
+            {% if platforms %}
+            <span class="platformsTitle">Платформы:</span>
+            <div id="product-platforms" class="product-platforms">
+                {% for platform in platforms %}
+                <label class="product-platforms-radio">
+                    <input type="radio" name="platform" value="{{ platform }}" {% if forloop.first %}checked{% endif %}>
+                    <span>{{ platform }}</span>
+                </label>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if genres %}
+            <span class="genresTitle">Жанры:</span>
+            <div id="product-genres" class="product-genres">
+                {% for genre in genres %}
+                <div class="genre">
+                    <a class="genre-link" href="#">{{ genre }}</a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="price-container">
+                {% if product.old_price %}
+                <div class="old-price-container">
+                    <span class="old-price">{{ product.old_price|floatformat:2 }} ₽</span>
+                    <span class="discount">-{{ product.discount_percent }}%</span>
+                </div>
+                {% endif %}
+                <span class="new-price">{{ product.price|floatformat:2 }} ₽</span>
+                <button class="buy-button" data-product-id="{{ product.id }}" data-product-name="{{ product.name }}"
+                    data-product-price="{{ product.price }}"
+                    data-product-image="{{ product.image_url }}">Купить</button>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/productScreenshotsSlider.js' %}"></script>
+<script src="{% static 'js/productSkeletonLoader.js' %}"></script>
+<script src="{% static 'js/productAddToCart.js' %}"></script>
+{% endblock %}
