@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Способы оплаты{% endblock %}
+{% block style %}{% static 'css/payment.css' %}{% endblock %}
+
+{% block content %}
+<main>
+    <h1 class="page-title">Способы оплаты и доставки</h1>
+    <nav class="breadcrumbs">
+        <ol>
+            <li><a href="{% url 'home' %}">Главная</a></li>
+            <li><span>Способы оплаты</span></li>
+        </ol>
+    </nav>
+
+    <div class="payment-content">
+        <div class="payment-block">
+            <h2>Оплата</h2>
+            <ul>
+                <li><strong>Банковские карты</strong> — Visa, MasterCard, МИР</li>
+                <li><strong>СБП (Система Быстрых Платежей)</strong> — через QR-код или приложение</li>
+                <li><strong>ЮMoney / Qiwi</strong> — через платёжную систему</li>
+                <li><strong>Криптовалюта</strong> — по предварительной договорённости (напишите в поддержку)</li>
+                <li><strong>Подарочные карты</strong> — при наличии акций</li>
+            </ul>
+            <p>Все платежи проходят через защищённые шлюзы. Мы не храним данные ваших карт или аккаунтов.</p>
+        </div>
+
+        <div class="payment-block">
+            <h2>Доставка цифровых товаров</h2>
+            <ul>
+                <li><strong>Ключи и коды</strong> — моментально после оплаты, на экране или на почту</li>
+                <li><strong>Подписки</strong> — активируются вручную, обычно в течение 5–30 минут</li>
+                <li><strong>Пополнение аккаунтов</strong> — вы указываете логин, мы выполняем вручную</li>
+                <li><strong>Подарочные товары</strong> — могут требовать добавления в друзья в Steam/Epic и др.</li>
+            </ul>
+            <p>Вы всегда можете уточнить статус или способ активации, обратившись в <a href="{% url 'contacts' %}">поддержку</a>.</p>
+        </div>
+    </div>
+</main>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/cartCounter.js' %}"></script>
+{% endblock %}

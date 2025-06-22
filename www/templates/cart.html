@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Корзина{% endblock %}
+{% block style %}{% static 'css/cart.css' %}{% endblock %}
+
+{% block content %}
+<main class="main">
+    <div class="cart">
+        <div class="cart-title-container">
+            <h1>Корзина</h1>
+            <span class="number-products">0 шт</span>
+        </div>
+        <nav class="breadcrumbs">
+            <ol>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><span>Корзина</span></li>
+            </ol>
+        </nav>
+
+        <div id="empty-cart-message">
+            <p>Ваша корзина пуста</p>
+            <a href="{% url 'home' %}" class="continue-shopping">Продолжить покупки</a>
+        </div>
+
+        <div class="cart-content">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Товар</th>
+                        <th>Цена</th>
+                        <th>Кол-во</th>
+                        <th>Сумма</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div class="checkout-box">
+                <label for="promo" class="promo-label">ПРИМЕНИТЬ ПРОМОКОД:</label>
+                <div class="promo-row">
+                    <input type="text" id="promo" class="promo-input" />
+                    <button class="apply-btn">ПРИМЕНИТЬ</button>
+                </div>
+                <div class="total">
+                    <span>ИТОГО К ОПЛАТЕ:</span>
+                    <strong class="cart-total">2 580 ₽</strong>
+                </div>
+                <a href="{% url 'order' %}">
+                    <button type="button" class="order-btn">ОФОРМИТЬ ЗАКАЗ</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/cartTotalAmout.js' %}"></script>
+<script src="{% static 'js/cartLogic.js' %}"></script>
+{% endblock %}

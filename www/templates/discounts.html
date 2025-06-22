@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}GameDealers — Акции{% endblock %}
+{% block style %}{% static 'css/discounts.css' %}{% endblock %}
+
+{% block content %}
+<main class="main">
+    <h1 class="page-title">Акции</h1>
+    <nav class="breadcrumbs">
+        <ol>
+            <li><a href="{% url 'home' %}">Главная</a></li>
+            <li><span>Акции</span></li>
+        </ol>
+    </nav>
+
+    <div class="promo-slider">
+        <div class="promo-slider-container">
+        </div>
+        <div class="promo-slider-buttons">
+            <button class="slider-button prev" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" fill="white" />
+                </svg>
+            </button>
+            <button class="slider-button next" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="white" />
+                </svg>
+            </button>
+        </div>
+        <div class="promo-slider-pagination"></div>
+    </div>
+
+    <form class="search-form" id="discounts-search-form-input" method="get">
+        <input type="text" class="search-form-input" name="q" placeholder="Введите название или тег..."
+            value="{{ request.GET.q }}">
+        <button type="submit">Найти</button>
+    </form>
+
+    {% if products %}
+    <div class="catalog-grid-container" id="discounts-container">
+
+        {% for product in products %}
+        <div class="product-card">
+            <div class="game-image">
+                <a href="{% url 'product' %}?id={{ product.id }}">
+                    {% if product.image_url %}
+                    <img src="{% static 'images/' %}{{ product.image_url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <div class="no-image">Нет изображения</div>
+                    {% endif %}
+                </a>
+            </div>
+            <a href="{% url 'product' %}?id={{ product.id }}">
+                <p class="game-name">{{ product.name|default:"Без названия" }}</p>
+            </a>
+            <div class="old-price-container">
+                <span class="old-price">{{ product.old_price|floatformat:2 }}&nbsp;₽</span>
+                <span class="discount">-{{ product.discount_percent }}%</span>
+            </div>
+            <div class="price-cart">
+                <span class="price">{{ product.price|floatformat:2 }}&nbsp;₽</span>
+                <div class="card-button"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty-result-message">Нет товаров со скидкой.</p>
+    {% endif %}
+</main>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/discountsScroller.js' %}"></script>
+<script src="{% static 'js/cartCounter.js' %}"></script>
+{% endblock %}

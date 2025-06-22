@@ -1,0 +1,423 @@
+@use 'base';
+@use 'footer';
+@use 'header';
+@use 'productGrid';
+@use 'quickAddToCartModal';
+
+.intro-section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    max-width: 2000px;
+    margin: auto auto;
+
+    .intro-content {
+        margin-top: 96px;
+        margin-inline: auto;
+        padding: 20px;
+        height: auto;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+
+        @media (max-width: 1600px) {
+            margin-inline: 40px;
+        }
+
+        .intro-text {
+            font-size: 25px;
+            width: 312px;
+            max-width: 100%;
+        }
+
+        .dotted-rectangle {
+            background-image: url("../images/Dotted-back.png");
+            width: 184px;
+            height: 184px;
+            margin-left: -500px;
+            z-index: 10;
+        }
+
+        .discord p {
+            font-size: 23px;
+        }
+
+        .discord-link {
+            font-size: 25px;
+            text-decoration: underline;
+        }
+    }
+
+    .main-action {
+        width: 250px;
+        margin-top: 200px;
+
+        .action-game-image {
+            background-image: url("../images/Red_Dead_Redemption_2_coverart.jpg");
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            width: 250px;
+            height: 250px;
+            margin-bottom: 10%;
+        }
+    }
+}
+
+.main-banner {
+    position: relative;
+    background-image: url("../images/kingdom-come-deliverance-2-11f6u.png");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    aspect-ratio: 1170 / 680;
+    max-width: 1170px;
+    max-height: 680px;
+    margin-left: auto;
+
+    &-link::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+    }
+
+    &-offer {
+        position: absolute;
+        background-image: url("../images/Red-background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 355px;
+        height: 356px;
+        top: 65%;
+        left: 5%;
+        z-index: 20;
+
+        &-inner {
+            padding: 40px;
+
+            h3 {
+                font-size: 25px;
+                margin: 0;
+            }
+
+            p {
+                line-height: 21px;
+            }
+        }
+    }
+}
+
+.dotted-rectangle-2 {
+        background-image: url("../images/Dotted-back-2.png");
+        background-repeat: no-repeat;
+        width: 273px;
+        height: 364px;
+        position: absolute;
+        z-index: 10;
+        right: -50px;
+        top: 550px;
+
+        @media (max-width: 1200px) {
+            top: 105%;
+        }
+}
+
+
+.catalog {
+    h1 {
+        text-align: center;
+        font-size: 60px;
+        font-weight: 500;
+        
+        @media (max-width: 600px) {
+            font-size: 45px;
+        }
+    }
+}
+
+.all-products-link {
+    text-align: center;
+    border: 2px solid var(--grey-text);
+    padding: 35px;
+    color: var(--grey-text);
+    margin-top: 40px;
+    max-width: 250px;
+    margin-inline: auto;
+}
+
+.categories {
+    max-width: 1900px;
+    margin-inline: auto;
+    margin-top: 148px;
+
+    &-head {
+        display: grid;
+        grid-template-columns: 85% 15%;
+        align-items: center;
+
+        @media (max-width: 1150px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;    
+        }
+        
+        
+        h1 {
+            font-size: 80px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .slider-buttons {
+            display: flex;
+            gap: 40px;
+
+            button {
+                background-color: transparent;
+                color: white;
+                border: 2px solid white;
+                border-radius: 30px;
+                cursor: pointer;
+                font-size: 30px;
+                width: 56px;
+                height: 56px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &:disabled {
+                    cursor: auto;
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+    
+    &-grid-container {
+        position: relative;
+
+        display: flex;
+        gap: 60px;
+        margin-left: 5%;
+        overflow: hidden;
+        max-width: calc(6 * (233px + 60px) - 60px);
+
+        &-item {
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            text-align: center;
+            height: 314px;
+            min-height: 167px;
+            width: 233px;
+            flex-shrink: 0;
+            border: 2px solid white;
+            font-size: 20px;
+            font-weight: 500;
+            // padding-inline: 15px;
+            transition: transform 0.5s ease;
+        }
+    }
+}
+
+.red-background {
+    background-color: var(--red);
+}
+
+@mixin Repeat-background($pathToBackground) {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -10;
+        left: -10;
+        width: 200%;
+        height: 200%;
+        background-image: url($pathToBackground);
+        background-size: 60px;
+        transform: rotate(15deg);
+        z-index: -1;
+        opacity: 0.2;
+    }
+}
+
+.repeat-back {
+    position: relative;
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 0.2;
+    }
+
+    span {
+        position: absolute;
+        margin-inline: 15px;
+    }
+}
+
+@media (max-width: 900px) {
+    .intro-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        .intro-content {
+            margin-top: 200px;
+
+            .intro-text {
+                text-align: center;
+            }
+
+            .discord {
+                text-align: center;
+            }
+        }
+    }
+
+    .main-banner {
+        margin-left: 0;
+        order: -1;
+
+        &-offer {
+            top: 90%;
+            left: auto;
+            width: 100%;
+            height: auto;
+            background-size: 100% 100%;
+            padding: 20px;
+            text-align: center;
+
+            &-inner {
+                padding: 0;
+        
+                h3 {
+                    font-size: 20px;
+                }
+        
+                p {
+                    font-size: 14px;
+                }
+
+                .price-cart {
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    .dotted-rectangle-2 {
+        display: none;
+    }
+}
+
+@media (max-width: 450px) {
+    
+    .intro-section {
+        .intro-content {
+            margin-top: 250px;
+        }
+
+        .dotted-rectangle {
+            display: none;
+        }
+    }
+
+    .catalog {
+        h1 {
+            font-size: 40px;
+        }
+    }
+
+    .categories {
+        &-head {
+            h1 {
+                font-size: 50px;
+            }
+        }
+        
+        &-grid-container {
+            gap: 30px;
+            &-item {
+                width: 130px;
+                height: 168px;
+                font-size: 16px;
+            }
+        }
+
+        .discount-label {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+
+            .number {
+                width: 40px;
+                height: 40px;
+            }
+    
+            .percent {
+                width: 30px;
+                height: 30px;
+            }
+        }
+        
+    }
+}
+
+@media (max-width: 320px) {
+    .intro-section {
+        .intro-content {
+            .intro-text,
+            .discord p,
+            .discord a {
+                font-size: 20px;
+            }
+        }
+
+        .main-action {
+            width: 200px;
+    
+            .action-game-image {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    }
+}
+
+@media (max-width: 280px) {
+    .intro-section {
+        .intro-content {
+            margin-top: 300px;
+
+            .intro-text,
+            .discord p,
+            .discord a {
+                font-size: 15px;
+                
+            }
+        }
+    }
+
+    .catalog {
+        h1 {
+            font-size: 30px;
+        }
+    }
+
+    .categories-head {
+        h1 {
+            font-size: 40px;
+        }
+    }
+}

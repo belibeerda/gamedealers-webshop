@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Контакты{% endblock %}
+{% block style %}{% static 'css/contacts.css' %}{% endblock %}
+
+{% block content %}
+<main>
+    <h1 class="page-title">Контакты</h1>
+    <nav class="breadcrumbs">
+        <ol>
+            <li><a href="{% url 'home' %}">Главная</a></li>
+            <li><span>Контакты</span></li>
+        </ol>
+    </nav>
+
+    <div class="contacts-container">
+        <div class="contacts-info">
+            <h2>Связаться с нами</h2>
+            <p><strong>Email:</strong> <a href="mailto:support@gamedealers.ru">support@gamedealers.ru</a></p>
+            <p><strong>Телеграм:</strong> <a href="https://t.me/gamedealers" target="_blank">@gamedealers</a></p>
+            <p><strong>Дискорд:</strong> <a href="https://discord.com/g0med1las"
+                    target="_blank">discord.com/g0med1las</a></p>
+            <p><strong>Мы работаем:</strong> ежедневно с 10:00 до 20:00 (МСК)</p>
+        </div>
+
+        <div class="contacts-map">
+            <h2>Офис (по предварительной записи)</h2>
+            <p>г. Москва, ул. Цифровая, д. 42, БЦ «Геймер Плаза»</p>
+            <div class="map-responsive">
+                <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2243.4955508075673!2d37.709513119573984!3d55.784632586826625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b53572833d0e71%3A0x8628a480fee2ba6!2z0KPQu9C10Lkg0L_Qu9Cw0LfQsA!5e0!3m2!1sru!2sru!4v1749921166885!5m2!1sru!2sru"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            </div>
+            
+        </div>
+    </div>
+</main>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/cartCounter.js' %}"></script>
+{% endblock %}

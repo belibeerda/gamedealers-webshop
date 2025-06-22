@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}GameDealers — Поиск{% endblock %}
+{% block style %}{% static 'css/search.css' %}{% endblock %}
+
+{% block content %}
+<main class="main">
+    <div class="search-head">
+
+        <form method="get" class="search-form">
+            <h1>Все товары</h1>
+            <nav class="breadcrumbs">
+                <ol>
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li><span>Все товары</span></li>
+                </ol>
+            </nav>
+            <input type="text" name="q" class="search-form-input" placeholder="Введите название или тег..."
+                value="{{ request.GET.q }}">
+
+            <div class="select-container">
+                <select name="genre" class="search-form-select">
+                    <option value>Все жанры</option>
+                    {% for genre in genres %}
+                    <option value="{{ genre.genre_id }}" {% if genre.genre_id|stringformat:"s" == request.GET.genre%}selected{% endif %}>{{genre.genre_name }}
+                    </option>
+                    {% endfor %}
+                </select>
+
+                <select name="platform" class="search-form-select">
+                    <option value>Все платформы</option>
+                    {% for platform in platforms %}
+                    <option value="{{ platform.platform_id }}" {% if platform.platform_id|stringformat:"s" == request.GET.platform %}selected{% endif %}>{{platform.platform_name }}</option>
+                    {% endfor %}
+                </select>
+
+                <select name="sort" class="search-form-select">
+                    <option value>Сортировать</option>
+                    <option value="price_asc" {% if request.GET.sort == "price_asc" %}selected{% endif %}>
+                        Цена по возрастанию
+                    </option>
+                    <option value="price_desc" {% if request.GET.sor == "price_desc" %}selected{% endif %}>
+                        Цена по убыванию
+                    </option>
+                </select>
+            </div>
+
+            <button type="submit">Найти</button>
+        </form>
+
+    </div>
+    {% if products %}
+    <div class="catalog-grid-container">
+        {% for product in products %}
+        <div class="product-card">
+            <div class="game-image">
+                <a href="{% url 'product' %}?id={{ product.id }}">
+                    {% if product.image_url %}
+                    <img src="/static/images/{{ product.image_url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <div class="no-image">Нет изображения</div>
+                    {% endif %}
+                </a>
+            </div>
+            <a href="{% url 'product' %}?id={{ product.id }}">
+                <p class="game-name">
+                    {{ product.name|default:'Без названия' }}
+                </p>
+            </a>
+            {% if product.discount_percent %}
+            <div class="old-price-container">
+                <span class="old-price">
+                    {{ product.old_price|floatformat:2}}&nbsp;₽
+                </span>
+                <span class="discount">
+                    -{{ product.discount_percent }}%
+                </span>
+            </div>
+            {% endif %}
+            <div class="price-cart">
+                <span class="price">
+                    {{ product.price|floatformat:2 }}&nbsp;₽
+                </span>
+                <div class="card-button add-to-cart-button" data-product-id="{{ product.id }}"
+                    data-product-name="{{ product.name }}" data-product-price="{{ product.price|floatformat:2 }}"
+                    data-product-image="{{ product.image_url|default:'No-img.png' }}"
+                    data-product-platforms="{% for pp in product.productplatforms_set.all %}{{ pp.platform.platform_id }}:{{ pp.platform.platform_name }}{% if not forloop.last %};{% endif %}{% endfor %}">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty-result-message">
+        По вашему запросу товаров не найдено.
+    </p>
+    {% endif %}
+</main>
+{% endblock %}
+{% block modals %}
+<div id="quickAddToCartModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-product-image">
+            <img id="modalProductImage" src="" alt="Product Image">
+        </div>
+        <div class="info-container">
+            <h2 id="modalProductName"></h2>
+            <p class="modal-product-price">Цена: <strong><span id="modalProductPrice"></span>&nbsp;₽</strong></p>
+            <div class="modal-platforms-container">
+                <p>Выберите платформу:</p>
+                <div id="modal-platforms" class="modal-platforms"></div>
+            </div>
+            <button id="modalAddToCartButton" class="buy-button">Добавить в корзину</button>
+        </div>
+        <span class="close-button">&times;</span>
+    </div>
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/cartCounter.js' %}"></script>
+<script src="{% static 'js/quickAddToCart.js' %}"></script>
+{% endblock %}
